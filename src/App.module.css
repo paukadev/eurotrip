@@ -1,0 +1,99 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Sticky departure-board bar --- */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-1);
+  box-shadow: var(--shadow-bar);
+}
+
+.barInner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--text-1);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand:hover {
+  color: var(--text-1);
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--r-1);
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+}
+
+.brandText {
+  font-size: 0.98rem;
+}
+
+.brandYear {
+  font-family: var(--font-mono);
+  color: var(--text-3);
+  font-weight: 500;
+  margin-left: 0.15rem;
+}
+
+.route {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border-1);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* --- Content column --- */
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--sp-6) var(--sp-4) var(--sp-7);
+}
+
+@media (max-width: 30rem) {
+  .main {
+    padding: var(--sp-5) var(--sp-3) var(--sp-6);
+  }
+}
+
+.footer {
+  border-top: 1px solid var(--border-2);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: var(--sp-5) var(--sp-4);
+  max-width: 64rem;
+  margin: 0 auto;
+  width: 100%;
+}

@@ -1,0 +1,3 @@
+1. Analise as datas de ida e volta mais economicas dentro de um intervalo de 22 dias em torno da data de 15/12/2026 até 23/01/2027 para o leste europeu roteiro consiste em Berlin, Budapeste, Praga, Cracovia. Compare combinacoes e justifique quais são as 3 melhores opcoes com raciocinio detalhado partindo de Sao Paulo(GRU). 
+
+2. Liste os voos para de Sao Paulo(GRU) e destino (que encontrou acima) e as melhores datas que encontrou acima, incluindo tambem companhias low-cost regionais e conexoes menhos conhecidas, ordene pelo valor total real, não pelas tarifas base

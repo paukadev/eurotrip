@@ -1,0 +1,23 @@
+.header {
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--border-1);
+}
+
+.header h1 {
+  margin-bottom: var(--sp-2);
+}
+
+.dates {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  margin: 0 0 var(--sp-1);
+}
+
+.header p:last-of-type {
+  color: var(--text-3);
+  font-size: 0.85rem;
+  margin: 0;
+}

@@ -1,0 +1,96 @@
+.wrapper {
+  max-width: 100%;
+}
+
+.wrapper > p {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  margin: calc(-1 * var(--sp-2)) 0 var(--sp-4);
+}
+
+/* --- The itinerary as a rail: a vertical line with station stops --- */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0 0.4rem 1.75rem;
+  position: relative;
+  max-height: 30rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* the rail line */
+.list::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.9rem;
+  bottom: 0.9rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-border),
+    var(--border-1) 85%
+  );
+}
+
+.item {
+  position: relative;
+  display: block;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-1);
+  border-radius: var(--r-1);
+  background: var(--surface-1);
+  color: var(--text-2);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* the station node sitting on the rail */
+.item::before {
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  top: 0.85rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 2px solid var(--accent-border);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.item:hover {
+  background: var(--surface-2);
+  border-color: var(--border-3);
+  color: var(--text-1);
+}
+
+/* the stop "lights up" on hover — warm lamplight */
+.item:hover::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim), 0 0 12px var(--accent-glow);
+}
+
+.name {
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.dates {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-3);
+}

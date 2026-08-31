@@ -1,0 +1,286 @@
+{
+  "title": "Eurotrip 2026/2027",
+  "origin": "GRU",
+  "generalItems": [
+    {
+      "kind": "translado",
+      "title": "Voo internacional GRU ⇄ Berlin (ida e volta)",
+      "status": "comprado",
+      "value": 6200,
+      "currency": "BRL"
+    },
+    {
+      "kind": "hospedagem",
+      "title": "Seguro viagem (período completo)",
+      "status": "comprado",
+      "value": 480,
+      "currency": "BRL"
+    }
+  ],
+  "destinos": [
+    {
+      "name": "Berlin",
+      "label": "1ª parte",
+      "inicioData": "2026-12-29",
+      "fimData": "2027-01-02",
+      "coordenadas": { "lat": 52.52, "lon": 13.405 },
+      "hospedagens": [
+        {
+          "nome": "Hotel Mitte Berlin",
+          "endereco": "Torstraße, Berlin",
+          "checkin": "2026-12-29",
+          "checkout": "2027-01-02",
+          "status": "comprado",
+          "valor": 1600,
+          "moeda": "BRL"
+        }
+      ],
+      "translados": [
+        {
+          "modo": "trem",
+          "partida": "Berlin",
+          "chegada": "Cracóvia",
+          "horario": "",
+          "status": "pendente"
+        }
+      ],
+      "roteiro": [
+        {
+          "data": "2026-12-16",
+          "horario": "10:00",
+          "titulo": "Portão de Brandemburgo e Reichstag",
+          "tipo": "atracao",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-16",
+          "horario": "15:00",
+          "titulo": "Museum Island",
+          "tipo": "atracao",
+          "status": "Gratuito",
+          "valor": 24,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-17",
+          "horario": "11:00",
+          "titulo": "East Side Gallery",
+          "tipo": "atracao",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        }
+      ]
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-01-02",
+      "fimData": "2027-01-05",
+      "coordenadas": { "lat": 50.0647, "lon": 19.945 },
+      "hospedagens": [
+        {
+          "nome": "A definir",
+          "endereco": "A definir",
+          "checkin": "2027-01-02",
+          "checkout": "2027-01-05",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "BRL"
+        }
+      ],
+      "translados": [
+        {
+          "modo": "onibus",
+          "partida": "Cracóvia",
+          "chegada": "Budapeste",
+          "horario": "2027-01-05T09:00",
+          "status": "pendente"
+        }
+      ],
+      "roteiro": []
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-01-05",
+      "fimData": "2027-01-09",
+      "coordenadas": { "lat": 47.4979, "lon": 19.0402 },
+      "hospedagens": [
+        {
+          "nome": "A definir",
+          "endereco": "A definir",
+          "checkin": "2027-01-05",
+          "checkout": "2027-01-09",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "BRL"
+        }
+      ],
+      "translados": [
+        {
+          "modo": "trem",
+          "partida": "Budapeste",
+          "chegada": "Viena",
+          "horario": "2027-01-09T10:15",
+          "status": "pendente"
+        }
+      ],
+      "roteiro": [
+        
+      ]
+    },
+    {
+      "name": "Viena",
+      "label": "1ª parte",
+      "inicioData": "2027-01-09",
+      "fimData": "2027-01-11",
+      "coordenadas": { "lat": 48.2082, "lon": 16.3738 },
+      "hospedagens": [
+        {
+          "nome": "A definir",
+          "endereco": "A definir",
+          "checkin": "2027-01-09",
+          "checkout": "2027-01-11",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "EUR"
+        }
+      ],
+      "translados": [
+        {
+          "modo": "trem",
+          "partida": "Viena",
+          "chegada": "Bratislava",
+          "horario": "2027-01-10T09:15",
+          "status": "pendente"
+        },
+        {
+          "modo": "trem",
+          "partida": "Viena",
+          "chegada": "Praga",
+          "horario": "2027-01-11T09:15",
+          "status": "pendente"
+        }
+      ],
+      "roteiro": [
+        {
+          "data": "2027-01-10",
+          "horario": "10:00",
+          "titulo": "Bratisvala: passeio de um dia",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "BRL"
+        }        
+      ]
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-01-10",
+      "fimData": "2027-01-10",
+      "coordenadas": { "lat": 48.1486, "lon": 17.1077 },
+      "hospedagens": [],
+      "translados": [
+        {
+          "modo": "trem",
+          "partida": "Bratislava",
+          "chegada": "Viena",
+          "horario": "2027-01-10T09:15",
+          "status": "pendente"
+        }
+      ],
+      "roteiro": []
+    },   
+    {
+      "name": "Praga",
+      "inicioData": "2027-01-11",
+      "fimData": "2027-01-15",
+      "coordenadas": { "lat": 50.0755, "lon": 14.4378 },
+      "hospedagens": [
+        {
+          "nome": "Hotel Praga Centro",
+          "endereco": "Praça Wenceslau, Praga",
+          "checkin": "2027-01-11",
+          "checkout": "2027-01-15",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "BRL"
+        }
+      ],
+      "translados": [
+        {
+          "modo": "onibus",
+          "partida": "Praga",
+          "chegada": "Berlin",
+          "horario": "2027-01-15T08:30",
+          "status": "pendente"
+        }
+      ],
+      "roteiro": [
+        {
+          "data": "2027-01-11",
+          "horario": "10:00",
+          "titulo": "Relógio Astronômico",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "CZK"
+        },
+        {
+          "data": "2027-01-11",
+          "horario": "09:30",
+          "titulo": "Castelo de Praga",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 250,
+          "moeda": "CZK"
+        },
+        {
+          "data": "2027-01-11",
+          "horario": "17:00",
+          "titulo": "Ponte Carlos ao entardecer",
+          "tipo": "passeio",
+          "status": "pendente"
+        }
+      ]
+    },
+    {
+      "name": "Berlin",
+      "label": "2ª parte",
+      "inicioData": "2027-01-15",
+      "fimData": "2027-01-18",
+      "coordenadas": { "lat": 52.52, "lon": 13.405 },
+      "hospedagens": [
+        {
+          "nome": "A definir",
+          "endereco": "A definir",
+          "checkin": "2027-01-15",
+          "checkout": "2027-01-18",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "BRL"
+        }
+      ],
+      "translados": [],
+      "roteiro": [
+        {
+          "data": "2027-01-07",
+          "horario": "10:00",
+          "titulo": "Museu de História Alemã",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 10,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2027-01-08",
+          "horario": "12:00",
+          "titulo": "Mercado de Natal remanescente / passeio livre",
+          "tipo": "passeio",
+          "status": "pendente"
+        }
+      ]
+    }
+  ]
+}

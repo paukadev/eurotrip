@@ -1,0 +1,13 @@
+.empty {
+  padding: var(--sp-6) var(--sp-4);
+  text-align: center;
+  color: var(--text-3);
+  background: var(--surface-inset);
+  border: 1px dashed var(--border-3);
+  border-radius: var(--r-2);
+}
+
+.empty p {
+  margin: 0;
+  font-size: 0.9rem;
+}

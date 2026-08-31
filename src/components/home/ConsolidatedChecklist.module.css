@@ -1,0 +1,62 @@
+.wrapper {
+  max-width: 100%;
+}
+
+/* Two readouts: "comprado" is lit (warm), "pendente" is unlit (dim) */
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-3);
+}
+
+.counts span {
+  flex: 1 1 8rem;
+  padding: var(--sp-3);
+  border-radius: var(--r-1);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--border-1);
+}
+
+/* comprado — the lamp is on */
+.counts span:first-child {
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent-strong);
+}
+
+/* pendente — not yet lit */
+.counts span:last-child {
+  background: var(--surface-2);
+  color: var(--text-2);
+}
+
+.currencyList {
+  list-style: none;
+  margin: 0 0 var(--sp-3);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-radius: var(--r-1);
+  overflow: hidden;
+  border: 1px solid var(--border-2);
+}
+
+.currencyList li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-2);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--surface-inset);
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  margin: 0;
+}

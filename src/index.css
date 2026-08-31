@@ -1,0 +1,208 @@
+/*
+ * Eurotrip — design system
+ * Feel: a train window at dusk crossing Central Europe in winter —
+ * deep cold-blue dark outside, warm amber lamplight inside.
+ * Depth strategy: borders + subtle surface shifts (dark leans on borders).
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- Surfaces: midnight indigo, whisper-quiet elevation steps --- */
+  --bg: #0c0e17; /* page canvas */
+  --surface-1: #12141f; /* cards / sections */
+  --surface-2: #191c2a; /* raised: hover, nested panels */
+  --surface-inset: #090a11; /* inset: map panel, code-like data */
+
+  /* --- Text hierarchy: warm-white lamplight fading to cool dusk --- */
+  --text-1: #f4f1ea; /* primary */
+  --text-2: #b8bccc; /* secondary / body */
+  --text-3: #7c8199; /* tertiary / metadata */
+  --text-muted: #565b70; /* disabled / faint */
+
+  /* --- Borders: low-opacity, findable but never loud --- */
+  --border-1: rgba(233, 236, 255, 0.09); /* standard */
+  --border-2: rgba(233, 236, 255, 0.05); /* softer separation */
+  --border-3: rgba(233, 236, 255, 0.16); /* emphasis */
+
+  /* --- Accent: warm amber lamplight — the one color that means "warmth/secured/active" --- */
+  --accent: #e6a94e;
+  --accent-strong: #f2bd6b;
+  --accent-dim: rgba(230, 169, 78, 0.14); /* lit glow fill */
+  --accent-border: rgba(230, 169, 78, 0.4);
+  --accent-glow: rgba(230, 169, 78, 0.28);
+
+  /* --- Semantic: pendente is "unlit" (cool, dim); warning is terracotta dusk --- */
+  --warn: #dd9a6c;
+  --warn-dim: rgba(221, 154, 108, 0.12);
+  --warn-border: rgba(221, 154, 108, 0.34);
+
+  /* --- Spacing scale (base 0.25rem) --- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+
+  /* --- Radius --- */
+  --r-1: 0.5rem; /* inputs, badges */
+  --r-2: 0.875rem; /* cards */
+  --r-3: 1.25rem; /* hero / modals */
+
+  /* --- Type --- */
+  --font-sans:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:
+    ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", Menlo, monospace;
+
+  --shadow-bar: 0 1px 0 var(--border-2), 0 8px 24px -16px rgba(0, 0, 0, 0.8);
+  --shadow-card: 0 12px 32px -24px rgba(0, 0, 0, 0.9);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-2);
+  background: var(--bg);
+  overflow-x: hidden;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle cold-dusk vignette so the dark isn't flat */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      120% 80% at 50% -10%,
+      rgba(120, 132, 210, 0.08),
+      transparent 60%
+    ),
+    radial-gradient(
+      90% 60% at 90% 0%,
+      rgba(230, 169, 78, 0.05),
+      transparent 55%
+    );
+  pointer-events: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Typography scale --- */
+h1 {
+  font-size: clamp(1.55rem, 1.1rem + 2.2vw, 2.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  color: var(--text-1);
+  margin: 0 0 var(--sp-3);
+  text-wrap: balance;
+}
+
+/* Section titles as departure-board "eyebrow" labels with an amber tick */
+h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin: 0 0 var(--sp-4);
+}
+
+h2::before {
+  content: "";
+  width: 0.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  flex: none;
+}
+
+h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-1);
+  margin: 0 0 var(--sp-2);
+}
+
+p {
+  margin: 0 0 var(--sp-2);
+}
+
+strong {
+  color: var(--text-1);
+  font-weight: 600;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+a:focus-visible,
+[tabindex]:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-1);
+}
+
+/* --- Sections render as quiet cards inside the app main column --- */
+main section {
+  background: var(--surface-1);
+  border: 1px solid var(--border-1);
+  border-radius: var(--r-2);
+  padding: var(--sp-5);
+  margin: 0 0 var(--sp-4);
+  box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 30rem) {
+  main section {
+    padding: var(--sp-4);
+  }
+}
+
+/* Data reads like a rail timetable */
+.tabular,
+time {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}

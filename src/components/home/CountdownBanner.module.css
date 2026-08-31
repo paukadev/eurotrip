@@ -1,0 +1,35 @@
+/* A lamplit departure-board readout: warm glow against the cold dark */
+.banner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5) var(--sp-3) var(--sp-4);
+  border-radius: var(--r-2);
+  background:
+    linear-gradient(
+      120deg,
+      var(--accent-dim),
+      transparent 70%
+    ),
+    var(--surface-1);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-strong);
+  font-family: var(--font-mono);
+  font-size: clamp(1.05rem, 0.85rem + 1.1vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px var(--accent-glow);
+}
+
+/* the "lamp" — a glowing dot */
+.banner::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-glow);
+  flex: none;
+}

@@ -1,0 +1,5 @@
+/* A narrower reading column for detail pages than the wide home grid */
+.page {
+  max-width: 44rem;
+  margin: 0 auto;
+}

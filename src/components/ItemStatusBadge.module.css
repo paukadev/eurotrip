@@ -1,0 +1,30 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  vertical-align: middle;
+}
+
+/* comprado — the lamp is on: warm amber glow */
+.comprado {
+  background: var(--accent-dim);
+  color: var(--accent-strong);
+  border-color: var(--accent-border);
+  box-shadow: 0 0 14px -3px var(--accent-glow);
+}
+
+/* pendente — not yet lit: dim, dashed outline */
+.pendente {
+  background: transparent;
+  color: var(--text-3);
+  border-color: var(--border-3);
+  border-style: dashed;
+}

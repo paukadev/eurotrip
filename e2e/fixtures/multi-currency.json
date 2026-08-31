@@ -1,0 +1,31 @@
+{
+  "title": "Eurotrip Multi Moeda",
+  "origin": "GRU",
+  "generalItems": [
+    { "kind": "translado", "title": "Seguro viagem", "status": "comprado", "value": 200, "currency": "BRL" }
+  ],
+  "destinos": [
+    {
+      "name": "Praga",
+      "inicioData": "2026-12-24",
+      "fimData": "2026-12-26",
+      "hospedagens": [
+        { "nome": "Hotel Praga Centro", "status": "pendente", "valor": 250, "moeda": "CZK" }
+      ],
+      "translados": [
+        { "modo": "trem", "chegada": "Cracóvia", "status": "comprado", "valor": 40, "moeda": "EUR" }
+      ],
+      "roteiro": []
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2026-12-27",
+      "fimData": "2026-12-28",
+      "hospedagens": [
+        { "nome": "Hotel Cracóvia", "status": "pendente", "valor": 300, "moeda": "PLN" }
+      ],
+      "translados": [],
+      "roteiro": []
+    }
+  ]
+}

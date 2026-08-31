@@ -1,0 +1,507 @@
+{
+  "title": "Eurotrip Escala",
+  "origin": "GRU",
+  "generalItems": [],
+  "destinos": [
+    {
+      "name": "Berlin",
+      "inicioData": "2026-12-15",
+      "fimData": "2026-12-16"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2026-12-17",
+      "fimData": "2026-12-18"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2026-12-19",
+      "fimData": "2026-12-20"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2026-12-21",
+      "fimData": "2026-12-22"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2026-12-23",
+      "fimData": "2026-12-24"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2026-12-25",
+      "fimData": "2026-12-26"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2026-12-27",
+      "fimData": "2026-12-28"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2026-12-29",
+      "fimData": "2026-12-30"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2026-12-31",
+      "fimData": "2027-01-01"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-01-02",
+      "fimData": "2027-01-03"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-01-04",
+      "fimData": "2027-01-05"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-01-06",
+      "fimData": "2027-01-07"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-01-08",
+      "fimData": "2027-01-09"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-01-10",
+      "fimData": "2027-01-11"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-01-12",
+      "fimData": "2027-01-13"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-01-14",
+      "fimData": "2027-01-15"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-01-16",
+      "fimData": "2027-01-17"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-01-18",
+      "fimData": "2027-01-19"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-01-20",
+      "fimData": "2027-01-21"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-01-22",
+      "fimData": "2027-01-23"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-01-24",
+      "fimData": "2027-01-25"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-01-26",
+      "fimData": "2027-01-27"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-01-28",
+      "fimData": "2027-01-29"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-01-30",
+      "fimData": "2027-01-31"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-02-01",
+      "fimData": "2027-02-02"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-02-03",
+      "fimData": "2027-02-04"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-02-05",
+      "fimData": "2027-02-06"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-02-07",
+      "fimData": "2027-02-08"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-02-09",
+      "fimData": "2027-02-10"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-02-11",
+      "fimData": "2027-02-12"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-02-13",
+      "fimData": "2027-02-14"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-02-15",
+      "fimData": "2027-02-16"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-02-17",
+      "fimData": "2027-02-18"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-02-19",
+      "fimData": "2027-02-20"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-02-21",
+      "fimData": "2027-02-22"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-02-23",
+      "fimData": "2027-02-24"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-02-25",
+      "fimData": "2027-02-26"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-02-27",
+      "fimData": "2027-02-28"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-03-01",
+      "fimData": "2027-03-02"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-03-03",
+      "fimData": "2027-03-04"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-03-05",
+      "fimData": "2027-03-06"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-03-07",
+      "fimData": "2027-03-08"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-03-09",
+      "fimData": "2027-03-10"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-03-11",
+      "fimData": "2027-03-12"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-03-13",
+      "fimData": "2027-03-14"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-03-15",
+      "fimData": "2027-03-16"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-03-17",
+      "fimData": "2027-03-18"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-03-19",
+      "fimData": "2027-03-20"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-03-21",
+      "fimData": "2027-03-22"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-03-23",
+      "fimData": "2027-03-24"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-03-25",
+      "fimData": "2027-03-26"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-03-27",
+      "fimData": "2027-03-28"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-03-29",
+      "fimData": "2027-03-30"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-03-31",
+      "fimData": "2027-04-01"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-04-02",
+      "fimData": "2027-04-03"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-04-04",
+      "fimData": "2027-04-05"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-04-06",
+      "fimData": "2027-04-07"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-04-08",
+      "fimData": "2027-04-09"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-04-10",
+      "fimData": "2027-04-11"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-04-12",
+      "fimData": "2027-04-13"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-04-14",
+      "fimData": "2027-04-15"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-04-16",
+      "fimData": "2027-04-17"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-04-18",
+      "fimData": "2027-04-19"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-04-20",
+      "fimData": "2027-04-21"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-04-22",
+      "fimData": "2027-04-23"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-04-24",
+      "fimData": "2027-04-25"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-04-26",
+      "fimData": "2027-04-27"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-04-28",
+      "fimData": "2027-04-29"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-04-30",
+      "fimData": "2027-05-01"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-05-02",
+      "fimData": "2027-05-03"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-05-04",
+      "fimData": "2027-05-05"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-05-06",
+      "fimData": "2027-05-07"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-05-08",
+      "fimData": "2027-05-09"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-05-10",
+      "fimData": "2027-05-11"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-05-12",
+      "fimData": "2027-05-13"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-05-14",
+      "fimData": "2027-05-15"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-05-16",
+      "fimData": "2027-05-17"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-05-18",
+      "fimData": "2027-05-19"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-05-20",
+      "fimData": "2027-05-21"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-05-22",
+      "fimData": "2027-05-23"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-05-24",
+      "fimData": "2027-05-25"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-05-26",
+      "fimData": "2027-05-27"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-05-28",
+      "fimData": "2027-05-29"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-05-30",
+      "fimData": "2027-05-31"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-06-01",
+      "fimData": "2027-06-02"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-06-03",
+      "fimData": "2027-06-04"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-06-05",
+      "fimData": "2027-06-06"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-06-07",
+      "fimData": "2027-06-08"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-06-09",
+      "fimData": "2027-06-10"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-06-11",
+      "fimData": "2027-06-12"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-06-13",
+      "fimData": "2027-06-14"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-06-15",
+      "fimData": "2027-06-16"
+    },
+    {
+      "name": "Cracóvia",
+      "inicioData": "2027-06-17",
+      "fimData": "2027-06-18"
+    },
+    {
+      "name": "Munique",
+      "inicioData": "2027-06-19",
+      "fimData": "2027-06-20"
+    },
+    {
+      "name": "Varsóvia",
+      "inicioData": "2027-06-21",
+      "fimData": "2027-06-22"
+    },
+    {
+      "name": "Bratislava",
+      "inicioData": "2027-06-23",
+      "fimData": "2027-06-24"
+    },
+    {
+      "name": "Berlin",
+      "inicioData": "2027-06-25",
+      "fimData": "2027-06-26"
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-06-27",
+      "fimData": "2027-06-28"
+    },
+    {
+      "name": "Budapeste",
+      "inicioData": "2027-06-29",
+      "fimData": "2027-06-30"
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2027-07-01",
+      "fimData": "2027-07-02"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin: 0 0 var(--sp-5);
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--border-1);
+  border-radius: var(--r-1);
+  background: var(--surface-1);
+  color: var(--text-2);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.nav a:hover {
+  border-color: var(--accent-border);
+  background: var(--surface-2);
+  color: var(--text-1);
+}

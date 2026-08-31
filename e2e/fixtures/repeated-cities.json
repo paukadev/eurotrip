@@ -1,0 +1,15 @@
+{
+  "title": "Eurotrip Cidades Repetidas",
+  "origin": "GRU",
+  "generalItems": [],
+  "destinos": [
+    { "name": "Berlin", "inicioData": "2026-12-15", "fimData": "2026-12-16", "coordenadas": { "lat": 52.52, "lon": 13.405 } },
+    { "name": "Viena", "inicioData": "2026-12-17", "fimData": "2026-12-18", "coordenadas": { "lat": 48.2082, "lon": 16.3738 } },
+    { "name": "Budapeste", "inicioData": "2026-12-19", "fimData": "2026-12-20", "coordenadas": { "lat": 47.4979, "lon": 19.0402 } },
+    { "name": "Viena", "inicioData": "2026-12-21", "fimData": "2026-12-22", "coordenadas": { "lat": 48.2082, "lon": 16.3738 } },
+    { "name": "Praga", "inicioData": "2026-12-23", "fimData": "2026-12-24", "coordenadas": { "lat": 50.0755, "lon": 14.4378 } },
+    { "name": "Cracóvia", "inicioData": "2026-12-25", "fimData": "2026-12-26", "coordenadas": { "lat": 50.0647, "lon": 19.945 } },
+    { "name": "Berlin", "inicioData": "2026-12-27", "fimData": "2026-12-28", "coordenadas": { "lat": 52.52, "lon": 13.405 } },
+    { "name": "Munique", "inicioData": "2026-12-29", "fimData": "2026-12-30", "coordenadas": { "lat": 48.1351, "lon": 11.582 } }
+  ]
+}

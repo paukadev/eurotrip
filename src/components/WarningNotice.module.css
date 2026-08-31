@@ -1,0 +1,19 @@
+.list {
+  margin: var(--sp-2) 0;
+  padding: var(--sp-2) var(--sp-3);
+  list-style: none;
+  background: var(--warn-dim);
+  color: var(--warn);
+  border: 1px solid var(--warn-border);
+  border-left-width: 3px;
+  border-radius: var(--r-1);
+  font-size: 0.78rem;
+}
+
+.list li {
+  margin: 0;
+}
+
+.list li + li {
+  margin-top: var(--sp-1);
+}

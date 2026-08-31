@@ -1,0 +1,40 @@
+{
+  "title": "Eurotrip Leste Europeu",
+  "origin": "GRU",
+  "generalItems": [
+    { "kind": "translado", "title": "Voo internacional GRU-Berlin", "status": "comprado", "value": 4500, "currency": "BRL" }
+  ],
+  "destinos": [
+    {
+      "name": "Berlin",
+      "inicioData": "2026-12-15",
+      "fimData": "2026-12-17",
+      "coordenadas": { "lat": 52.52, "lon": 13.405 },
+      "hospedagens": [
+        { "nome": "Hotel Adlon", "endereco": "Unter den Linden 77", "checkin": "2026-12-15", "checkout": "2026-12-17", "status": "comprado", "valor": 300, "moeda": "EUR" }
+      ],
+      "translados": [],
+      "roteiro": []
+    },
+    {
+      "name": "Praga",
+      "inicioData": "2026-12-24",
+      "fimData": "2026-12-26",
+      "coordenadas": { "lat": 50.0755, "lon": 14.4378 },
+      "hospedagens": [
+        { "nome": "Hotel Praga Centro", "endereco": "Praca Venceslau 1", "checkin": "2026-12-24", "checkout": "2026-12-26", "status": "comprado", "valor": 250, "moeda": "EUR" }
+      ],
+      "translados": [],
+      "roteiro": []
+    },
+    {
+      "name": "Viena",
+      "inicioData": "2027-01-01",
+      "fimData": "2027-01-02",
+      "coordenadas": { "lat": 48.2082, "lon": 16.3738 },
+      "hospedagens": [],
+      "translados": [],
+      "roteiro": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+.status {
+  max-width: 32rem;
+  margin: var(--sp-7) auto;
+  padding: var(--sp-6) var(--sp-5);
+  text-align: center;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  background: var(--surface-1);
+  border: 1px solid var(--border-1);
+  border-radius: var(--r-2);
+}
