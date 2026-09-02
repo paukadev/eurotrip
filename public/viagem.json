@@ -174,24 +174,7 @@
           "moeda": "BRL"
         }        
       ]
-    },
-    {
-      "name": "Bratislava",
-      "inicioData": "2027-01-10",
-      "fimData": "2027-01-10",
-      "coordenadas": { "lat": 48.1486, "lon": 17.1077 },
-      "hospedagens": [],
-      "translados": [
-        {
-          "modo": "trem",
-          "partida": "Bratislava",
-          "chegada": "Viena",
-          "horario": "2027-01-10T09:15",
-          "status": "pendente"
-        }
-      ],
-      "roteiro": []
-    },   
+    },  
     {
       "name": "Praga",
       "inicioData": "2027-01-11",
