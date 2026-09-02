@@ -21,18 +21,18 @@
     {
       "name": "Berlin",
       "label": "1ª parte",
-      "inicioData": "2026-12-29",
-      "fimData": "2027-01-02",
+      "inicioData": "2026-12-15",
+      "fimData": "2026-12-18",
       "coordenadas": { "lat": 52.52, "lon": 13.405 },
       "hospedagens": [
         {
           "nome": "Hotel Mitte Berlin",
           "endereco": "Torstraße, Berlin",
-          "checkin": "2026-12-29",
-          "checkout": "2027-01-02",
+          "checkin": "2026-12-15",
+          "checkout": "2026-12-18",
           "status": "comprado",
-          "valor": 1600,
-          "moeda": "BRL"
+          "valor": 340,
+          "moeda": "EUR"
         }
       ],
       "translados": [
@@ -40,8 +40,8 @@
           "modo": "trem",
           "partida": "Berlin",
           "chegada": "Cracóvia",
-          "horario": "",
-          "status": "pendente"
+          "horario": "2026-12-18T08:20",
+          "status": "comprado"
         }
       ],
       "roteiro": [
@@ -50,7 +50,7 @@
           "horario": "10:00",
           "titulo": "Portão de Brandemburgo e Reichstag",
           "tipo": "atracao",
-          "status": "Gratuito",
+          "status": "pendente",
           "valor": 0,
           "moeda": "EUR"
         },
@@ -59,7 +59,7 @@
           "horario": "15:00",
           "titulo": "Museum Island",
           "tipo": "atracao",
-          "status": "Gratuito",
+          "status": "pendente",
           "valor": 24,
           "moeda": "EUR"
         },
@@ -68,7 +68,7 @@
           "horario": "11:00",
           "titulo": "East Side Gallery",
           "tipo": "atracao",
-          "status": "Gratuito",
+          "status": "pendente",
           "valor": 0,
           "moeda": "EUR"
         }
@@ -76,18 +76,18 @@
     },
     {
       "name": "Cracóvia",
-      "inicioData": "2027-01-02",
-      "fimData": "2027-01-05",
+      "inicioData": "2026-12-18",
+      "fimData": "2026-12-21",
       "coordenadas": { "lat": 50.0647, "lon": 19.945 },
       "hospedagens": [
         {
-          "nome": "A definir",
-          "endereco": "A definir",
-          "checkin": "2027-01-02",
-          "checkout": "2027-01-05",
-          "status": "pendente",
-          "valor": 0,
-          "moeda": "BRL"
+          "nome": "Old Town Krakow Apartments",
+          "endereco": "Rua Floriańska, Cracóvia",
+          "checkin": "2026-12-18",
+          "checkout": "2026-12-21",
+          "status": "comprado",
+          "valor": 260,
+          "moeda": "PLN"
         }
       ],
       "translados": [
@@ -95,26 +95,52 @@
           "modo": "onibus",
           "partida": "Cracóvia",
           "chegada": "Budapeste",
-          "horario": "2027-01-05T09:00",
+          "horario": "2026-12-21T09:00",
           "status": "pendente"
         }
       ],
-      "roteiro": []
+      "roteiro": [
+        {
+          "data": "2026-12-19",
+          "horario": "09:30",
+          "titulo": "Mina de Sal de Wieliczka",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 100,
+          "moeda": "PLN"
+        },
+        {
+          "data": "2026-12-20",
+          "horario": "10:00",
+          "titulo": "Castelo de Wawel",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 40,
+          "moeda": "PLN"
+        },
+        {
+          "data": "2026-12-20",
+          "horario": "14:00",
+          "titulo": "Praça do Mercado (Rynek Główny)",
+          "tipo": "passeio",
+          "status": "pendente"
+        }
+      ]
     },
     {
       "name": "Budapeste",
-      "inicioData": "2027-01-05",
-      "fimData": "2027-01-09",
+      "inicioData": "2026-12-21",
+      "fimData": "2026-12-25",
       "coordenadas": { "lat": 47.4979, "lon": 19.0402 },
       "hospedagens": [
         {
-          "nome": "A definir",
-          "endereco": "A definir",
-          "checkin": "2027-01-05",
-          "checkout": "2027-01-09",
-          "status": "pendente",
-          "valor": 0,
-          "moeda": "BRL"
+          "nome": "Danube View Apartments",
+          "endereco": "Váci utca, Budapeste",
+          "checkin": "2026-12-21",
+          "checkout": "2026-12-25",
+          "status": "comprado",
+          "valor": 320,
+          "moeda": "EUR"
         }
       ],
       "translados": [
@@ -122,28 +148,61 @@
           "modo": "trem",
           "partida": "Budapeste",
           "chegada": "Viena",
-          "horario": "2027-01-09T10:15",
+          "horario": "2026-12-25T10:15",
           "status": "pendente"
         }
       ],
       "roteiro": [
-        
+        {
+          "data": "2026-12-22",
+          "horario": "09:00",
+          "titulo": "Parlamento Húngaro",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 22,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-23",
+          "horario": "16:00",
+          "titulo": "Banhos Termais Széchenyi",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 28,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-24",
+          "horario": "11:00",
+          "titulo": "Castelo de Buda e Bastião dos Pescadores",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-25",
+          "horario": "13:00",
+          "titulo": "Almoço de Natal na Grande Feira Municipal",
+          "tipo": "passeio",
+          "status": "pendente"
+        }
       ]
     },
     {
       "name": "Viena",
       "label": "1ª parte",
-      "inicioData": "2027-01-09",
-      "fimData": "2027-01-11",
+      "inicioData": "2026-12-25",
+      "fimData": "2026-12-28",
       "coordenadas": { "lat": 48.2082, "lon": 16.3738 },
       "hospedagens": [
         {
-          "nome": "A definir",
-          "endereco": "A definir",
-          "checkin": "2027-01-09",
-          "checkout": "2027-01-11",
-          "status": "pendente",
-          "valor": 0,
+          "nome": "Hotel Zentrum Wien",
+          "endereco": "Mariahilfer Straße, Viena",
+          "checkin": "2026-12-25",
+          "checkout": "2026-12-28",
+          "status": "comprado",
+          "valor": 300,
           "moeda": "EUR"
         }
       ],
@@ -152,60 +211,136 @@
           "modo": "trem",
           "partida": "Viena",
           "chegada": "Bratislava",
-          "horario": "2027-01-10T09:15",
-          "status": "pendente"
-        },
-        {
-          "modo": "trem",
-          "partida": "Viena",
-          "chegada": "Praga",
-          "horario": "2027-01-11T09:15",
+          "horario": "2026-12-28T09:15",
           "status": "pendente"
         }
       ],
       "roteiro": [
         {
-          "data": "2027-01-10",
+          "data": "2026-12-26",
           "horario": "10:00",
-          "titulo": "Bratisvala: passeio de um dia",
+          "titulo": "Palácio de Schönbrunn",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 26,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-27",
+          "horario": "15:00",
+          "titulo": "Catedral de Santo Estêvão",
           "tipo": "atracao",
           "status": "pendente",
           "valor": 0,
-          "moeda": "BRL"
-        }        
+          "moeda": "EUR"
+        }
       ]
     },
     {
       "name": "Bratislava",
-      "inicioData": "2027-01-10",
-      "fimData": "2027-01-10",
+      "inicioData": "2026-12-28",
+      "fimData": "2026-12-30",
       "coordenadas": { "lat": 48.1486, "lon": 17.1077 },
-      "hospedagens": [],
+      "hospedagens": [
+        {
+          "nome": "Old Town Bratislava Rooms",
+          "endereco": "Rua Panská, Bratislava",
+          "checkin": "2026-12-28",
+          "checkout": "2026-12-30",
+          "status": "comprado",
+          "valor": 130,
+          "moeda": "EUR"
+        }
+      ],
       "translados": [
         {
           "modo": "trem",
           "partida": "Bratislava",
           "chegada": "Viena",
-          "horario": "2027-01-10T09:15",
+          "horario": "2026-12-30T09:15",
           "status": "pendente"
         }
       ],
-      "roteiro": []
-    },   
+      "roteiro": [
+        {
+          "data": "2026-12-29",
+          "horario": "10:30",
+          "titulo": "Castelo de Bratislava",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 10,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-29",
+          "horario": "16:00",
+          "titulo": "Centro histórico a pé",
+          "tipo": "passeio",
+          "status": "pendente"
+        }
+      ]
+    },
+    {
+      "name": "Viena",
+      "label": "2ª parte",
+      "inicioData": "2026-12-30",
+      "fimData": "2027-01-02",
+      "coordenadas": { "lat": 48.2082, "lon": 16.3738 },
+      "hospedagens": [
+        {
+          "nome": "Hotel Zentrum Wien",
+          "endereco": "Mariahilfer Straße, Viena",
+          "checkin": "2026-12-30",
+          "checkout": "2027-01-02",
+          "status": "pendente",
+          "valor": 300,
+          "moeda": "EUR"
+        }
+      ],
+      "translados": [
+        {
+          "modo": "trem",
+          "partida": "Viena",
+          "chegada": "Praga",
+          "horario": "2027-01-02T09:00",
+          "status": "pendente"
+        }
+      ],
+      "roteiro": [
+        {
+          "data": "2026-12-31",
+          "horario": "22:00",
+          "titulo": "Réveillon na Rathausplatz",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 0,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2027-01-01",
+          "horario": "11:00",
+          "titulo": "Concerto de Ano Novo (Musikverein)",
+          "tipo": "atracao",
+          "status": "pendente",
+          "valor": 90,
+          "moeda": "EUR"
+        }
+      ]
+    },
     {
       "name": "Praga",
-      "inicioData": "2027-01-11",
-      "fimData": "2027-01-15",
+      "inicioData": "2027-01-02",
+      "fimData": "2027-01-06",
       "coordenadas": { "lat": 50.0755, "lon": 14.4378 },
       "hospedagens": [
         {
           "nome": "Hotel Praga Centro",
           "endereco": "Praça Wenceslau, Praga",
-          "checkin": "2027-01-11",
-          "checkout": "2027-01-15",
-          "status": "pendente",
-          "valor": 0,
-          "moeda": "BRL"
+          "checkin": "2027-01-02",
+          "checkout": "2027-01-06",
+          "status": "comprado",
+          "valor": 380,
+          "moeda": "CZK"
         }
       ],
       "translados": [
@@ -213,13 +348,13 @@
           "modo": "onibus",
           "partida": "Praga",
           "chegada": "Berlin",
-          "horario": "2027-01-15T08:30",
+          "horario": "2027-01-06T08:30",
           "status": "pendente"
         }
       ],
       "roteiro": [
         {
-          "data": "2027-01-11",
+          "data": "2027-01-03",
           "horario": "10:00",
           "titulo": "Relógio Astronômico",
           "tipo": "atracao",
@@ -228,7 +363,7 @@
           "moeda": "CZK"
         },
         {
-          "data": "2027-01-11",
+          "data": "2027-01-04",
           "horario": "09:30",
           "titulo": "Castelo de Praga",
           "tipo": "atracao",
@@ -237,7 +372,7 @@
           "moeda": "CZK"
         },
         {
-          "data": "2027-01-11",
+          "data": "2027-01-05",
           "horario": "17:00",
           "titulo": "Ponte Carlos ao entardecer",
           "tipo": "passeio",
@@ -248,18 +383,18 @@
     {
       "name": "Berlin",
       "label": "2ª parte",
-      "inicioData": "2027-01-15",
-      "fimData": "2027-01-18",
+      "inicioData": "2027-01-06",
+      "fimData": "2027-01-10",
       "coordenadas": { "lat": 52.52, "lon": 13.405 },
       "hospedagens": [
         {
-          "nome": "A definir",
-          "endereco": "A definir",
-          "checkin": "2027-01-15",
-          "checkout": "2027-01-18",
+          "nome": "Hotel Mitte Berlin",
+          "endereco": "Torstraße, Berlin",
+          "checkin": "2027-01-06",
+          "checkout": "2027-01-10",
           "status": "pendente",
-          "valor": 0,
-          "moeda": "BRL"
+          "valor": 340,
+          "moeda": "EUR"
         }
       ],
       "translados": [],
