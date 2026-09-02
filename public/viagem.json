@@ -50,9 +50,9 @@
           "horario": "10:00",
           "titulo": "Portão de Brandemburgo e Reichstag",
           "tipo": "atracao",
-          "status": "Gratuito",
+          "status": "gratuito",
           "valor": 0,
-          "moeda": "EUR"
+          "moeda": "BRL"
         },
         {
           "data": "2026-12-16",
@@ -61,7 +61,7 @@
           "tipo": "atracao",
           "status": "Gratuito",
           "valor": 24,
-          "moeda": "EUR"
+          "moeda": "BRL"
         },
         {
           "data": "2026-12-17",
@@ -70,7 +70,7 @@
           "tipo": "atracao",
           "status": "Gratuito",
           "valor": 0,
-          "moeda": "EUR"
+          "moeda": "BRL"
         }
       ]
     },
@@ -144,7 +144,7 @@
           "checkout": "2027-01-11",
           "status": "pendente",
           "valor": 0,
-          "moeda": "EUR"
+          "moeda": "BRL"
         }
       ],
       "translados": [
@@ -208,7 +208,7 @@
           "tipo": "atracao",
           "status": "pendente",
           "valor": 0,
-          "moeda": "CZK"
+          "moeda": "BRL"
         },
         {
           "data": "2027-01-11",
@@ -217,7 +217,7 @@
           "tipo": "atracao",
           "status": "pendente",
           "valor": 250,
-          "moeda": "CZK"
+          "moeda": "BRL"
         },
         {
           "data": "2027-01-11",
@@ -254,7 +254,7 @@
           "tipo": "atracao",
           "status": "pendente",
           "valor": 10,
-          "moeda": "EUR"
+          "moeda": "BRL"
         },
         {
           "data": "2027-01-08",

@@ -25,9 +25,9 @@ export function HomePage() {
         <CountdownBanner state={countdown} />
       </header>
 
-      <ConsolidatedChecklist trip={trip} />
-      <RouteMap stays={trip.stays} />
       <Timeline stays={ordered} totalDuration={duration} />
+      <RouteMap stays={trip.stays} />
+      <ConsolidatedChecklist trip={trip} />
       <GeneralItems items={trip.generalItems} />
     </div>
   );
