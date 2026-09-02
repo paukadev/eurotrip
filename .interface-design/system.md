@@ -79,7 +79,11 @@ Always use these variables — no raw hex in components.
   amber-dim fill + border + glow; `.pendente` transparent, `--text-3`, **dashed**
   `--border-3`.
 - **Stat readout pair** (`ConsolidatedChecklist`): two flex pills; first (comprado) lit
-  amber, second (pendente) `--surface-2` dim. Mono tabular numbers.
+  amber, second (pendente) `--surface-2` dim. Mono tabular numbers. Each pill is a
+  `<button>` toggle (`aria-expanded`/`aria-controls`, rotating `▸` caret) that opens a
+  **breakdown panel** below — inset list (data-row pattern), capped `18rem` + scroll,
+  `breakdownIn` fade/slide. Panel border carries lit/unlit: `--accent-border` for
+  comprado, **dashed** `--border-3` for pendente. Only one panel open at a time.
 - **Rail timeline** (`Timeline.module.css`): `.list` padding-left 1.75rem, vertical rail
   via `.list::before` (amber→border gradient), station node via `.item::before` (0.7rem
   dot) that fills amber + glows on hover. No inner scroll — the page scrolls (it's the

@@ -2,7 +2,8 @@
   max-width: 100%;
 }
 
-/* Two readouts: "comprado" is lit (warm), "pendente" is unlit (dim) */
+/* Two readouts: "comprado" is lit (warm), "pendente" is unlit (dim).
+   Each is a toggle that opens its item breakdown below. */
 .counts {
   display: flex;
   flex-wrap: wrap;
@@ -10,28 +11,143 @@
   margin: 0 0 var(--sp-3);
 }
 
-.counts span {
+.count {
   flex: 1 1 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
   padding: var(--sp-3);
   border-radius: var(--r-1);
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+  text-align: left;
   border: 1px solid var(--border-1);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.count:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* comprado — the lamp is on */
-.counts span:first-child {
+.bought {
   background: var(--accent-dim);
   border-color: var(--accent-border);
   color: var(--accent-strong);
 }
 
+.bought:hover {
+  border-color: var(--accent);
+}
+
 /* pendente — not yet lit */
-.counts span:last-child {
+.pending {
   background: var(--surface-2);
   color: var(--text-2);
+}
+
+.pending:hover {
+  border-color: var(--border-3);
+  color: var(--text-1);
+}
+
+.caret {
+  font-size: 0.7rem;
+  line-height: 1;
+  opacity: 0.7;
+  transition: transform 0.15s ease;
+}
+
+.count[aria-expanded="true"] .caret {
+  transform: rotate(90deg);
+}
+
+/* --- Item breakdown (opened panel) --- */
+.breakdown {
+  list-style: none;
+  margin: calc(-1 * var(--sp-1)) 0 var(--sp-3);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-1);
+  max-height: 18rem;
+  overflow-y: auto;
+  animation: breakdownIn 0.18s ease-out;
+}
+
+/* lit vs unlit carries to the panel edge */
+.breakdown.bought {
+  border-color: var(--accent-border);
+}
+
+.breakdown.pending {
+  border-style: dashed;
+  border-color: var(--border-3);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--surface-inset);
+  font-size: 0.8rem;
+}
+
+.rowTitle {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--text-1);
+}
+
+.breakdown.pending .rowTitle {
+  color: var(--text-2);
+}
+
+.rowNoValue {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.breakdownEmpty {
+  margin: calc(-1 * var(--sp-1)) 0 var(--sp-3);
+  padding: var(--sp-3);
+  border: 1px dashed var(--border-3);
+  border-radius: var(--r-1);
+  background: var(--surface-inset);
+  font-size: 0.78rem;
+  color: var(--text-3);
+}
+
+@keyframes breakdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret,
+  .breakdown {
+    transition: none;
+    animation: none;
+  }
 }
 
 .currencyList {
