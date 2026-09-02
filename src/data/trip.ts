@@ -80,7 +80,7 @@ export type LoadResult =
   | { ok: true; trip: Trip; warnings: string[] }
   | { ok: false; error: LoadError };
 
-const DEFAULT_TRIP_URL = `${import.meta.env.BASE_URL}dist/viagem.json`;
+const DEFAULT_TRIP_URL = `${import.meta.env.BASE_URL}viagem.json`;
 
 export function normalizeStatus(raw: unknown): { status: ItemStatus; warning?: string } {
   if (raw === undefined || raw === null) return { status: "pendente" };
