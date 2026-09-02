@@ -25,16 +25,10 @@ export function HomePage() {
         <CountdownBanner state={countdown} />
       </header>
 
-      <div className={styles.grid}>
-        <div className={styles.main}>
-          <Timeline stays={ordered} totalDuration={duration} />
-        </div>
-        <aside className={styles.aside}>
-          <RouteMap stays={trip.stays} />
-          <ConsolidatedChecklist trip={trip} />
-          <GeneralItems items={trip.generalItems} />
-        </aside>
-      </div>
+      <ConsolidatedChecklist trip={trip} />
+      <RouteMap stays={trip.stays} />
+      <Timeline stays={ordered} totalDuration={duration} />
+      <GeneralItems items={trip.generalItems} />
     </div>
   );
 }

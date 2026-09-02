@@ -16,8 +16,6 @@
   margin: 0;
   padding: 0.4rem 0 0.4rem 1.75rem;
   position: relative;
-  max-height: 30rem;
-  overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;

@@ -65,9 +65,10 @@ Always use these variables — no raw hex in components.
   glyph + `GRU ⇄ BER` pill) → centered `main` (max-width 64rem) → footer. Tests render
   `TripProvider`/`AppRoutes` directly, NOT `App`, so shell changes are test-safe. Keep the
   brand a plain `<a>`, **not** a heading (avoids duplicate `h1` breaking heading queries).
-- **Home** (`HomePage.module.css`): hero (mono eyebrow + h1 + countdown) then a grid —
-  single column on mobile, `minmax(0,1.5fr) minmax(0,1fr)` at ≥52rem (timeline main +
-  sticky aside). Aside order: RouteMap, ConsolidatedChecklist, GeneralItems.
+- **Home** (`HomePage.module.css`): one centered column (`max-width: 52rem`,
+  `margin-inline: auto`), every section a full-width row stacked at `--sp-5`. No grid, no
+  aside. Reading order = time pressure → booking status → where → when → loose ends: hero
+  (mono eyebrow + h1 + countdown), ConsolidatedChecklist, RouteMap, Timeline, GeneralItems.
 - **Detail pages** (`DestinationPage.module.css`): narrower 44rem reading column.
 - **Sections as cards**: `main section` is globally styled (surface-1, border-1, r-2,
   shadow-card). Just render `<section>` and it's a card.
@@ -81,7 +82,8 @@ Always use these variables — no raw hex in components.
   amber, second (pendente) `--surface-2` dim. Mono tabular numbers.
 - **Rail timeline** (`Timeline.module.css`): `.list` padding-left 1.75rem, vertical rail
   via `.list::before` (amber→border gradient), station node via `.item::before` (0.7rem
-  dot) that fills amber + glows on hover. Scroll container capped at 30rem.
+  dot) that fills amber + glows on hover. No inner scroll — the page scrolls (it's the
+  centerpiece row now).
 - **Data rows** (itinerary/lodging/transfer): `--surface-inset` bg, border-1, r-1; times
   in `.time` = mono amber; titles in `.title` = `--text-1`, `flex: 1 1 auto`.
 - **Warning** (`WarningNotice.module.css`): warn-dim bg, warn border with 3px left edge.

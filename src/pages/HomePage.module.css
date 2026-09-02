@@ -1,7 +1,12 @@
+/* Single centered column — every section is a full-width row, stacked in
+   reading order (status → map → timeline → extras). No aside, no grid. */
 .page {
   display: flex;
   flex-direction: column;
   gap: var(--sp-5);
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
 }
 
 .hero {
@@ -15,37 +20,4 @@
   text-transform: uppercase;
   color: var(--accent);
   margin: 0 0 var(--sp-2);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-4);
-  align-items: start;
-}
-
-/* Two columns once there's room; timeline leads, aside supports */
-@media (min-width: 52rem) {
-  .grid {
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    gap: var(--sp-5);
-  }
-}
-
-.main {
-  min-width: 0;
-}
-
-.aside {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Aside sections share the sticky-ish rhythm; keep the map near the top on wide screens */
-@media (min-width: 52rem) {
-  .aside {
-    position: sticky;
-    top: 4.5rem;
-  }
 }

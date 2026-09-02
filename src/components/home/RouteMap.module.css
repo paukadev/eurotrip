@@ -2,10 +2,14 @@
   max-width: 100%;
 }
 
-/* Dark inset panel — like looking out at the route at night */
+/* Dark inset panel — like looking out at the route at night.
+   Capped + centered so the map reads as a window in the row stack,
+   not a wall, and keeps the proportions it was tuned at. */
 .svg {
+  display: block;
   width: 100%;
-  max-width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
   height: auto;
   background:
     radial-gradient(
