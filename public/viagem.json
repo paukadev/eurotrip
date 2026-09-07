@@ -123,14 +123,14 @@
     {
       "name": "Budapeste",
       "inicioData": "2027-01-10",
-      "fimData": "2027-01-13",
+      "fimData": "2027-01-14",
       "coordenadas": { "lat": 48.2082, "lon": 16.3738 },
       "hospedagens": [
         {
           "nome": "A definir",
           "endereco": "A definir",
           "checkin": "2027-01-10",
-          "checkout": "2027-01-13",
+          "checkout": "2027-01-14",
           "status": "pendente",
           "valor": 0,
           "moeda": "BRL"
@@ -141,7 +141,7 @@
           "modo": "Voo",
           "partida": "Budapeste",
           "chegada": "Cracóvia",
-          "horario": "2027-01-12T09:15",
+          "horario": "2027-01-14T09:15",
           "valor": 1100,
           "status": "pendente"
         }
@@ -150,15 +150,15 @@
     },  
     {
       "name": "Cracovia",
-      "inicioData": "2027-01-13",
-      "fimData": "2027-01-15",
+      "inicioData": "2027-01-14",
+      "fimData": "2027-01-16",
       "coordenadas": { "lat": 50.0755, "lon": 14.4378 },
       "hospedagens": [
         {
           "nome": "A definir",
           "endereco": "",
-          "checkin": "2027-01-13",  
-          "checkout": "2027-01-15",
+          "checkin": "2027-01-14",  
+          "checkout": "2027-01-16",
           "status": "pendente",
           "valor": 0,
           "moeda": "BRL"
@@ -179,14 +179,14 @@
     {
       "name": "Berlin",
       "label": "2ª parte",
-      "inicioData": "2027-01-16",
+      "inicioData": "2027-01-17",
       "fimData": "2027-01-19",
       "coordenadas": { "lat": 52.52, "lon": 13.405 },
       "hospedagens": [
         {
           "nome": "A definir",
           "endereco": "A definir",
-          "checkin": "2027-01-16",
+          "checkin": "2027-01-17",
           "checkout": "2027-01-19",
           "status": "pendente",
           "valor": 0,
