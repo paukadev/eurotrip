@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { OrderedStay } from "../../data/derive";
+import { stayNights, type OrderedStay } from "../../data/derive";
 import { formatDateRange } from "../dateFormat";
 import { EmptyState } from "../EmptyState";
 import { WarningNotice } from "../WarningNotice";
@@ -21,15 +21,21 @@ export function Timeline({
       <h2>Roteiro</h2>
       {totalDuration !== undefined && <p>Duração total: {totalDuration} dias</p>}
       <ol className={styles.list} data-testid="timeline-list">
-        {stays.map((stay) => (
-          <li key={stay.slug}>
-            <Link className={styles.item} to={`/destino/${stay.slug}`}>
-              <span className={styles.name}>{stay.name}</span>
-              <span className={styles.dates}> — {formatDateRange(stay.startDate, stay.endDate)}</span>
-              {stay.overlap && <WarningNotice warnings={["Datas sobrepostas com o próximo destino."]} />}
-            </Link>
-          </li>
-        ))}
+        {stays.map((stay) => {
+          const nights = stayNights(stay);
+          return (
+            <li key={stay.slug}>
+              <Link className={styles.item} to={`/destino/${stay.slug}`}>
+                <span className={styles.name}>{stay.name}</span>
+                <span className={styles.dates}> — {formatDateRange(stay.startDate, stay.endDate)}</span>
+                {nights !== undefined && (
+                  <span className={styles.nights}> · {nights} {nights === 1 ? "noite" : "noites"}</span>
+                )}
+                {stay.overlap && <WarningNotice warnings={["Datas sobrepostas com o próximo destino."]} />}
+              </Link>
+            </li>
+          );
+        })}
       </ol>
     </section>
   );

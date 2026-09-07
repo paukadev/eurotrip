@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { orderedStays, tripDuration, findStayBySlug } from "./derive";
+import { orderedStays, tripDuration, findStayBySlug, stayNights } from "./derive";
 import { assignSlugs } from "./slug";
 import { date, makeStay, makeTrip } from "../test/fixtures";
 
@@ -91,5 +91,30 @@ describe("findStayBySlug (UT-040)", () => {
     const stay = makeStay({ slug: "viena-2" });
     const trip = makeTrip({ stays: [stay] });
     expect(findStayBySlug(trip, "viena-2")).toBe(stay);
+  });
+});
+
+describe("stayNights", () => {
+  it("counts nights between startDate and endDate (checkout day is not a night)", () => {
+    const stay = makeStay({ startDate: date("2027-01-02"), endDate: date("2027-01-06") });
+    expect(stayNights(stay)).toBe(4);
+  });
+
+  it("returns 1 for a single-night stay", () => {
+    const stay = makeStay({ startDate: date("2026-12-15"), endDate: date("2026-12-16") });
+    expect(stayNights(stay)).toBe(1);
+  });
+
+  it("returns 0 when both dates are the same day", () => {
+    const stay = makeStay({ startDate: date("2026-12-15"), endDate: date("2026-12-15") });
+    expect(stayNights(stay)).toBe(0);
+  });
+
+  it("returns undefined when a date is missing or the range is inverted", () => {
+    expect(stayNights(makeStay({ startDate: date("2026-12-15"), endDate: undefined }))).toBeUndefined();
+    expect(stayNights(makeStay({ startDate: undefined, endDate: date("2026-12-18") }))).toBeUndefined();
+    expect(
+      stayNights(makeStay({ startDate: date("2026-12-18"), endDate: date("2026-12-15") })),
+    ).toBeUndefined();
   });
 });

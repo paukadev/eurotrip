@@ -52,6 +52,17 @@ export function tripDuration(stays: Stay[]): number | undefined {
   return diffInDays(first, last) + 1;
 }
 
+/**
+ * Nights slept in a stay: `startDate` to `endDate`, i.e. the last day is a
+ * checkout, not a night. `undefined` when either date is missing or the range
+ * is inverted.
+ */
+export function stayNights(stay: Stay): number | undefined {
+  if (!stay.startDate || !stay.endDate) return undefined;
+  const nights = diffInDays(stay.startDate, stay.endDate);
+  return nights < 0 ? undefined : nights;
+}
+
 export function findStayBySlug(trip: Trip, slug: string): Stay | undefined {
   return trip.stays.find((stay) => stay.slug === slug);
 }

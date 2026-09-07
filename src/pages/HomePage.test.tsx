@@ -51,6 +51,8 @@ describe("HomePage", () => {
     expect(items).toHaveLength(8);
     expect(items[0]).toHaveTextContent("Berlin");
     expect(items[0]).toHaveTextContent("15/12/2026");
+    expect(items[0]).toHaveTextContent("2 noites");
+    expect(items[1]).toHaveTextContent("1 noite");
     expect(items[7]).toHaveTextContent("Munique");
   });
 

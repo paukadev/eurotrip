@@ -92,3 +92,10 @@
   font-size: 0.8rem;
   color: var(--text-3);
 }
+
+.nights {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
