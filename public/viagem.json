@@ -45,7 +45,17 @@
           "status": "pendente"
         }
       ],
-      "roteiro": []     
+      "roteiro": [
+        {
+          "data": "2026-12-30",
+          "horario": "16:50",
+          "titulo": "Chegada em Berlin",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        }
+      ]     
     },
     {
       "name": "Praga",
