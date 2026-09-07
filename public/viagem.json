@@ -21,14 +21,14 @@
     {
       "name": "Berlin",
       "label": "1ª parte",
-      "inicioData": "2026-12-29",
+      "inicioData": "2026-12-30",
       "fimData": "2027-01-02",
       "coordenadas": { "lat": 52.52, "lon": 13.405 },
       "hospedagens": [
         {
           "nome": "Hotel Mitte Berlin",
           "endereco": "Torstraße, Berlin",
-          "checkin": "2026-12-29",
+          "checkin": "2026-12-30",
           "checkout": "2027-01-02",
           "status": "comprado",
           "valor": 1600,
@@ -39,8 +39,8 @@
         {
           "modo": "trem",
           "partida": "Berlin",
-          "chegada": "Cracóvia",
-          "horario": "",
+          "chegada": "Praga",
+          "horario": "Parte da manha 4 horas de viagem ",
           "status": "pendente"
         }
       ],
