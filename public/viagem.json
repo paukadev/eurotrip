@@ -78,14 +78,14 @@
     {
       "name": "Viena",
       "inicioData": "2027-01-06",
-      "fimData": "2027-01-09",
+      "fimData": "2027-01-10",
       "coordenadas": { "lat": 47.4979, "lon": 19.0402 },
       "hospedagens": [
         {
           "nome": "A definir",
           "endereco": "A definir",
           "checkin": "2027-01-06",
-          "checkout": "2027-01-09",
+          "checkout": "2027-01-10",
           "status": "pendente",
           "valor": 0,
           "moeda": "BRL"
@@ -103,7 +103,7 @@
           "modo": "trem",
           "partida": "Viena",
           "chegada": "Budapeste",
-          "horario": "2027-01-09T10:15",
+          "horario": "2027-01-10T10:15",
           "status": "pendente"
         }
       ],
@@ -111,15 +111,15 @@
     },
     {
       "name": "Budapeste",
-      "inicioData": "2027-01-09",
-      "fimData": "2027-01-12",
+      "inicioData": "2027-01-10",
+      "fimData": "2027-01-13",
       "coordenadas": { "lat": 48.2082, "lon": 16.3738 },
       "hospedagens": [
         {
           "nome": "A definir",
           "endereco": "A definir",
-          "checkin": "2027-01-09",
-          "checkout": "2027-01-12",
+          "checkin": "2027-01-10",
+          "checkout": "2027-01-13",
           "status": "pendente",
           "valor": 0,
           "moeda": "BRL"
@@ -139,15 +139,15 @@
     },  
     {
       "name": "Cracovia",
-      "inicioData": "2027-01-12",
-      "fimData": "2027-01-14",
+      "inicioData": "2027-01-13",
+      "fimData": "2027-01-15",
       "coordenadas": { "lat": 50.0755, "lon": 14.4378 },
       "hospedagens": [
         {
           "nome": "A definir",
           "endereco": "",
-          "checkin": "2027-01-12",  
-          "checkout": "2027-01-14",
+          "checkin": "2027-01-13",  
+          "checkout": "2027-01-15",
           "status": "pendente",
           "valor": 0,
           "moeda": "BRL"
@@ -168,15 +168,15 @@
     {
       "name": "Berlin",
       "label": "2ª parte",
-      "inicioData": "2027-01-15",
+      "inicioData": "2027-01-16",
       "fimData": "2027-01-18",
       "coordenadas": { "lat": 52.52, "lon": 13.405 },
       "hospedagens": [
         {
           "nome": "A definir",
           "endereco": "A definir",
-          "checkin": "2027-01-15",
-          "checkout": "2027-01-18",
+          "checkin": "2027-01-16",
+          "checkout": "2027-01-19",
           "status": "pendente",
           "valor": 0,
           "moeda": "BRL"
