@@ -2,6 +2,7 @@ import { groupItineraryByDay } from "../../data/derive";
 import type { Activity, Stay } from "../../data/trip";
 import { formatDate } from "../dateFormat";
 import { ItemStatusBadge } from "../ItemStatusBadge";
+import { MapLinkButton } from "../MapLinkButton";
 import { MoneyAmount } from "../MoneyAmount";
 import styles from "./ItineraryByDay.module.css";
 
@@ -13,6 +14,7 @@ function ActivityRow({ activity, showDate }: { activity: Activity; showDate?: bo
       <span className={styles.title}>{activity.title}</span>
       {activity.status && <ItemStatusBadge status={activity.status} />}
       <MoneyAmount value={activity.value} currency={activity.currency} />
+      <MapLinkButton url={activity.mapUrl} label={activity.title} />
     </li>
   );
 }

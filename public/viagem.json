@@ -26,13 +26,14 @@
       "coordenadas": { "lat": 52.52, "lon": 13.405 },
       "hospedagens": [
         {
-          "nome": "Hotel Mitte Berlin",
-          "endereco": "Torstraße, Berlin",
+          "nome": "Leonardo Hotel Berlin",
+          "endereco": "Wilmersdorfer Str. 32, Berlim, Alemanha",
           "checkin": "2026-12-30",
           "checkout": "2027-01-02",
           "status": "comprado",
           "valor": 1600,
-          "moeda": "BRL"
+          "moeda": "BRL",
+          "mapa": "https://maps.app.goo.gl/jEHzdDeqniibyYey8"
         }
       ],
       "translados": [

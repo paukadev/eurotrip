@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { groupItineraryByDay } from "./derive";
+import { normalizeActivity } from "./trip";
 import { date, makeActivity, makeStay } from "../test/fixtures";
 
 describe("groupItineraryByDay", () => {
@@ -82,5 +83,23 @@ describe("groupItineraryByDay", () => {
     });
     const groups = groupItineraryByDay(stay);
     expect(groups).toHaveLength(1);
+  });
+});
+
+describe("normalizeActivity map link", () => {
+  it("exposes mapa as mapUrl on the activity", () => {
+    const activity = normalizeActivity(
+      { titulo: "Portão de Brandemburgo", mapa: "https://maps.google.com/?q=brandenburger+tor" },
+      "berlin-1",
+      0,
+    );
+    expect(activity.mapUrl).toBe("https://maps.google.com/?q=brandenburger+tor");
+    expect(activity.warnings).toEqual([]);
+  });
+
+  it("drops an invalid mapa and warns", () => {
+    const activity = normalizeActivity({ titulo: "Passeio", mapa: "nao-e-url" }, "s", 0);
+    expect(activity.mapUrl).toBeUndefined();
+    expect(activity.warnings).toHaveLength(1);
   });
 });

@@ -1,6 +1,7 @@
 import type { LodgingItem } from "../../data/trip";
 import { formatDate } from "../dateFormat";
 import { ItemStatusBadge } from "../ItemStatusBadge";
+import { MapLinkButton } from "../MapLinkButton";
 import { MoneyAmount } from "../MoneyAmount";
 import { WarningNotice } from "../WarningNotice";
 import styles from "./LodgingSection.module.css";
@@ -19,6 +20,11 @@ export function LodgingSection({ lodging }: { lodging: LodgingItem[] }) {
                 <strong>{item.title}</strong> <ItemStatusBadge status={item.status} />
               </p>
               {item.address && <p>{item.address}</p>}
+              {item.mapUrl && (
+                <p>
+                  <MapLinkButton url={item.mapUrl} label={item.title} />
+                </p>
+              )}
               <p>
                 Check-in: {formatDate(item.checkin)} · Check-out: {formatDate(item.checkout)}
               </p>

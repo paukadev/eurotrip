@@ -52,6 +52,44 @@ describe("DestinationPage", () => {
     expect(screen.queryByRole("link", { name: /próximo/i })).not.toBeInTheDocument();
   });
 
+  it("renders a map button for lodging and for itinerary activities that have 'mapa'", async () => {
+    stubFetch(
+      JSON.stringify({
+        title: "Eurotrip",
+        destinos: [
+          {
+            name: "Berlin",
+            slug: "berlin-1",
+            inicioData: "2026-12-30",
+            fimData: "2027-01-02",
+            hospedagens: [
+              {
+                nome: "Leonardo Hotel",
+                mapa: "https://maps.google.com/?q=leonardo",
+                checkin: "2026-12-30",
+                checkout: "2027-01-02",
+              },
+            ],
+            roteiro: [
+              { data: "2026-12-30", titulo: "Portão de Brandemburgo", mapa: "https://maps.google.com/?q=tor" },
+              { data: "2026-12-31", titulo: "Dia livre" },
+            ],
+          },
+        ],
+      }),
+    );
+    window.location.hash = "#/destino/berlin-1";
+    renderApp();
+
+    await screen.findByRole("heading", { level: 1 });
+    const links = screen.getAllByRole("link", { name: /no mapa/i });
+    expect(links).toHaveLength(2);
+    expect(links[0]).toHaveAttribute("href", "https://maps.google.com/?q=leonardo");
+    expect(links[0]).toHaveAttribute("target", "_blank");
+    expect(links[0]).toHaveAttribute("rel", expect.stringContaining("noopener"));
+    expect(links[1]).toHaveAttribute("href", "https://maps.google.com/?q=tor");
+  });
+
   it("IT-010: mounting directly at /#/destino/viena-2 renders that stay without visiting home", async () => {
     stubFetch(twoStayTrip);
     window.location.hash = "#/destino/viena-2";

@@ -19,6 +19,7 @@ export interface BookingItem {
 /** Lodging entry: a BookingItem plus display fields from PRD Business Rules. */
 export interface LodgingItem extends BookingItem {
   address?: string;
+  mapUrl?: string;
   checkin?: CalendarDate;
   checkout?: CalendarDate;
   inconsistentDates: boolean; // checkout < checkin
@@ -40,6 +41,7 @@ export interface TransferItem extends BookingItem {
 export interface Activity {
   id: string;
   date?: CalendarDate;
+  mapUrl?: string;
   time?: string;
   title: string;
   kind: string;
@@ -101,6 +103,29 @@ export function normalizeValue(raw: unknown): { value?: number; warning?: string
   return { value: undefined, warning: `Valor inválido "${String(raw)}" ignorado na soma.` };
 }
 
+/**
+ * Map link from the raw `mapa` field. Only absolute http(s) URLs are kept —
+ * anything else (relative paths, `javascript:`, non-strings) is dropped with a
+ * warning so a bad link never becomes a live anchor.
+ */
+export function normalizeMapUrl(raw: unknown): { mapUrl?: string; warning?: string } {
+  if (raw === undefined || raw === null || raw === "") return {};
+  if (typeof raw !== "string") {
+    return { warning: `Link de mapa inválido ignorado: "${String(raw)}".` };
+  }
+  const trimmed = raw.trim();
+  let parsed: URL;
+  try {
+    parsed = new URL(trimmed);
+  } catch {
+    return { warning: `Link de mapa inválido ignorado: "${trimmed}".` };
+  }
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+    return { warning: `Link de mapa inválido ignorado: "${trimmed}".` };
+  }
+  return { mapUrl: trimmed };
+}
+
 export function isValidCoordinate(lat: unknown, lon: unknown): boolean {
   return (
     typeof lat === "number" &&
@@ -149,6 +174,9 @@ export function normalizeLodging(
   const { value, warning: valueWarning } = normalizeValue(raw.valor);
   if (valueWarning) warnings.push(valueWarning);
 
+  const { mapUrl, warning: mapWarning } = normalizeMapUrl(raw.mapa);
+  if (mapWarning) warnings.push(mapWarning);
+
   const checkin = parseCalendarDate(raw.checkin);
   if (raw.checkin && !checkin) {
     warnings.push(`Data de check-in não reconhecida: "${raw.checkin}".`);
@@ -174,6 +202,7 @@ export function normalizeLodging(
     currency: raw.moeda,
     warnings,
     address: raw.endereco,
+    mapUrl,
     checkin,
     checkout,
     inconsistentDates,
@@ -214,6 +243,9 @@ export function normalizeActivity(
   stayEnd?: CalendarDate,
 ): Activity {
   const warnings: string[] = [];
+  const { mapUrl, warning: mapWarning } = normalizeMapUrl(raw.mapa);
+  if (mapWarning) warnings.push(mapWarning);
+
   const date = parseCalendarDate(raw.data);
   if (raw.data && !date) {
     warnings.push(`Data de atividade não reconhecida: "${raw.data}".`);
@@ -241,6 +273,7 @@ export function normalizeActivity(
   return {
     id: `${staySlug}-atividade-${index}`,
     date,
+    mapUrl,
     time: raw.horario,
     title: raw.titulo ?? "Atividade",
     kind: raw.tipo ?? "atividade",

@@ -26,6 +26,7 @@ const RawHospedagemSchema = z.object({
   status: z.string().optional(),
   valor: z.unknown().optional(),
   moeda: z.string().optional(),
+  mapa: z.unknown().optional(),
 });
 
 const RawTransladoSchema = z.object({
@@ -46,6 +47,7 @@ const RawAtividadeSchema = z.object({
   status: z.string().optional(),
   valor: z.unknown().optional(),
   moeda: z.string().optional(),
+  mapa: z.unknown().optional(),
 });
 
 const RawCoordenadasSchema = z.object({

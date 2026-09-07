@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, afterEach } from "vitest";
-import { normalizeLodging, loadTrip } from "./trip";
+import { normalizeLodging, normalizeMapUrl, loadTrip } from "./trip";
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -59,5 +59,49 @@ describe("normalizeLodging", () => {
     );
     expect(item.inconsistentDates).toBe(true);
     expect(item.warnings.length).toBeGreaterThan(0);
+  });
+});
+
+describe("normalizeMapUrl", () => {
+  it("keeps an absolute https map link", () => {
+    const url = "https://www.google.com/maps/place/Leonardo+Hotel+Berlin/@52.5,13.3,17z";
+    expect(normalizeMapUrl(url)).toEqual({ mapUrl: url });
+  });
+
+  it("trims surrounding whitespace", () => {
+    expect(normalizeMapUrl("  https://maps.app.goo.gl/abc  ")).toEqual({
+      mapUrl: "https://maps.app.goo.gl/abc",
+    });
+  });
+
+  it("returns nothing when the field is absent or empty", () => {
+    expect(normalizeMapUrl(undefined)).toEqual({});
+    expect(normalizeMapUrl("")).toEqual({});
+  });
+
+  it("drops non-http(s) or malformed links with a warning", () => {
+    for (const bad of ["javascript:alert(1)", "/maps/place", 42]) {
+      const result = normalizeMapUrl(bad);
+      expect(result.mapUrl).toBeUndefined();
+      expect(result.warning).toMatch(/Link de mapa inválido/);
+    }
+  });
+});
+
+describe("normalizeLodging map link", () => {
+  it("exposes mapa as mapUrl on the lodging item", () => {
+    const item = normalizeLodging(
+      { nome: "Hotel X", mapa: "https://maps.google.com/?q=hotel" },
+      "berlin-1",
+      0,
+    );
+    expect(item.mapUrl).toBe("https://maps.google.com/?q=hotel");
+    expect(item.warnings).toEqual([]);
+  });
+
+  it("drops an invalid mapa and warns", () => {
+    const item = normalizeLodging({ nome: "Hotel X", mapa: "javascript:alert(1)" }, "s", 0);
+    expect(item.mapUrl).toBeUndefined();
+    expect(item.warnings).toHaveLength(1);
   });
 });
