@@ -55,6 +55,24 @@
           "status": "Gratuito",
           "valor": 0,
           "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-30",
+          "horario": "15:00",
+          "titulo": "Check-in no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-12-02",
+          "horario": "12:00",
+          "titulo": "Check-out no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
         }
       ]     
     },
@@ -65,13 +83,14 @@
       "coordenadas": { "lat": 50.0647, "lon": 19.945 },
       "hospedagens": [
         {
-          "nome": "A definir",
+          "nome": "Hotel Assenzio",
           "endereco": "A definir",
           "checkin": "2027-01-02",
           "checkout": "2027-01-06",
-          "status": "pendente",
-          "valor": 0,
-          "moeda": "BRL"
+          "status": "comprado",
+          "valor": 1721,
+          "moeda": "BRL",
+          "mapa": "https://maps.app.goo.gl/BmSW9wAkL9HSo3v99"
         }
       ],
       "translados": [
@@ -84,7 +103,26 @@
           "status": "pendente"
         }
       ],
-      "roteiro": []
+      "roteiro": [
+        {
+          "data": "2026-01-02",
+          "horario": "15:00",
+          "titulo": "Check-in no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-01-1006",
+          "horario": "11:00",
+          "titulo": "Check-out no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        }
+      ]
     },
     {
       "name": "Viena",
@@ -93,13 +131,14 @@
       "coordenadas": { "lat": 47.4979, "lon": 19.0402 },
       "hospedagens": [
         {
-          "nome": "A definir",
-          "endereco": "A definir",
+          "nome": "Hotel Motel One Vienna-Westbahnhof",
+          "endereco": "Europaplatz 3, 1150 Wien, Áustria",
           "checkin": "2027-01-06",
           "checkout": "2027-01-10",
-          "status": "pendente",
-          "valor": 0,
-          "moeda": "BRL"
+          "status": "comprado",
+          "valor": 1814,
+          "moeda": "BRL",
+          "mapa": "https://maps.app.goo.gl/CEJDoU3wrpnhr8Ws5"
         }
       ],
       "translados": [
@@ -118,7 +157,26 @@
           "status": "pendente"
         }
       ],
-      "roteiro": []
+      "roteiro": [        
+        {
+          "data": "2026-01-06",
+          "horario": "15:00",
+          "titulo": "Check-in no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-01-10",
+          "horario": "12:00",
+          "titulo": "Check-out no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        }
+      ]
     },
     {
       "name": "Budapeste",
@@ -127,13 +185,14 @@
       "coordenadas": { "lat": 48.2082, "lon": 16.3738 },
       "hospedagens": [
         {
-          "nome": "A definir",
-          "endereco": "A definir",
+          "nome": "Hotel Bristol Budapest",
+          "endereco": "Kenyermezo u. 4, 1053 Budapeste, Hungria",
           "checkin": "2027-01-10",
           "checkout": "2027-01-14",
-          "status": "pendente",
-          "valor": 0,
-          "moeda": "BRL"
+          "status": "comprado",
+          "valor": 1589,
+          "moeda": "BRL",
+          "mapa": "https://maps.app.goo.gl/hLpigLwcaxehDeKz7"
         }
       ],
       "translados": [
@@ -146,7 +205,26 @@
           "status": "pendente"
         }
       ],
-      "roteiro": [ ]
+      "roteiro": [
+        {
+          "data": "2026-01-10",
+          "horario": "15:00",
+          "titulo": "Check-in no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        },
+        {
+          "data": "2026-01-14",
+          "horario": "10:00",
+          "titulo": "Check-out no hotel",
+          "tipo": "viagem",
+          "status": "Gratuito",
+          "valor": 0,
+          "moeda": "EUR"
+        }
+       ]
     },  
     {
       "name": "Cracovia",
