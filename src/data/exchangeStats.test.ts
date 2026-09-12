@@ -14,6 +14,14 @@ function series(values: Array<[string, number]>): SeriesPoint[] {
   return values.map(([date, value]) => ({ date, value }));
 }
 
+/** Série de dias corridos a partir de 15/06/2026, um por valor. */
+function days(values: number[]): SeriesPoint[] {
+  return values.map((value, index) => ({
+    date: new Date(Date.UTC(2026, 5, 15) + index * 86_400_000).toISOString().slice(0, 10),
+    value,
+  }));
+}
+
 describe("toBrlSeries", () => {
   it("inverte moeda-por-real em reais-por-unidade", () => {
     const result = toBrlSeries([{ date: "2026-09-11", perBrl: 0.16879 }], 1);
@@ -79,41 +87,51 @@ describe("summarize", () => {
   });
 
   it("dá selo 'bom' quando hoje está entre os 25% mais baratos (limite 0,75)", () => {
-    const result = summarize(series([
-      ["2026-09-08", 6.1],
-      ["2026-09-09", 6.2],
-      ["2026-09-10", 6.3],
-      ["2026-09-11", 6.0],
-    ]));
+    // 13 dias: 9 mais caros e 3 mais baratos que hoje → 9/12 = 0,75.
+    const result = summarize(days([6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 5.7, 5.8, 5.9, 6.0]));
     expect(result?.cheaperShare).toBeCloseTo(0.75, 5);
     expect(result?.verdict).toBe("bom");
   });
 
   it("dá selo 'caro' no limite de 0,25", () => {
-    const result = summarize(series([
-      ["2026-09-08", 5.8],
-      ["2026-09-09", 5.9],
-      ["2026-09-10", 6.3],
-      ["2026-09-11", 6.0],
-    ]));
+    // 13 dias: 3 mais caros e 9 mais baratos que hoje → 3/12 = 0,25.
+    const result = summarize(days([6.1, 6.2, 6.3, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6.0]));
     expect(result?.cheaperShare).toBeCloseTo(0.25, 5);
     expect(result?.verdict).toBe("caro");
   });
 
   it("dá selo 'media' entre os dois limites", () => {
-    const result = summarize(series([
-      ["2026-09-08", 5.8],
-      ["2026-09-09", 6.2],
-      ["2026-09-10", 6.3],
-      ["2026-09-11", 6.0],
-    ]));
+    // 13 dias: 6 mais caros e 6 mais baratos que hoje → 6/12 = 0,5.
+    const result = summarize(days([6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6.0]));
     expect(result?.cheaperShare).toBeCloseTo(0.5, 5);
     expect(result?.verdict).toBe("media");
+  });
+
+  it("conta empates como meio dia: série estável fica 'media' com 0,5", () => {
+    const flat = summarize(days(Array.from({ length: 90 }, () => 6.0)));
+    expect(flat?.cheaperShare).toBeCloseTo(0.5, 5);
+    expect(flat?.verdict).toBe("media");
+    expect(flat?.diffFromAverage).toBeCloseTo(0, 10);
+  });
+
+  it("dá selo 'bom' quando a série só cai e hoje é a mínima", () => {
+    const falling = summarize(days(Array.from({ length: 20 }, (_, index) => 6.5 - index * 0.02)));
+    expect(falling?.cheaperShare).toBeCloseTo(1, 5);
+    expect(falling?.verdict).toBe("bom");
+    expect(falling?.min.date).toBe(falling?.current.date);
+  });
+
+  it("não dá selo com menos de 10 dias, mesmo com comparação possível", () => {
+    const result = summarize(days([6.5, 6.4, 6.3, 6.2, 6.1, 6.0, 5.9, 5.8, 5.7]));
+    expect(result?.dayCount).toBe(9);
+    expect(result?.cheaperShare).toBeCloseTo(1, 5);
+    expect(result?.verdict).toBeUndefined();
   });
 
   it("não dá selo quando há um único dia", () => {
     const result = summarize(series([["2026-09-11", 6.0]]));
     expect(result?.current.value).toBe(6.0);
+    expect(result?.cheaperShare).toBe(0);
     expect(result?.verdict).toBeUndefined();
     expect(result?.dayCount).toBe(1);
   });

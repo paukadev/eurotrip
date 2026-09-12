@@ -25,7 +25,8 @@
 }
 
 .average {
-  stroke: var(--text-muted);
+  /* --text-muted não alcançava 3:1 sobre --surface-inset. */
+  stroke: var(--text-3);
   stroke-width: 1;
   stroke-dasharray: 3 3;
 }
@@ -47,7 +48,13 @@
 
 .label {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
+  fill: var(--text-3);
+}
+
+.axis {
+  font-family: var(--font-mono);
+  font-size: 9px;
   fill: var(--text-3);
 }
 

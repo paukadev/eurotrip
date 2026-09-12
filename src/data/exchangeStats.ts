@@ -62,12 +62,19 @@ export interface Summary {
   average: number;
   /** Fração: negativa quando hoje está abaixo da média. */
   diffFromAverage: number;
-  /** Fração dos dias do período mais caros que hoje. */
+  /**
+   * Fração dos dias de comparação (todos menos o atual) mais caros que hoje.
+   * Dias empatados com o valor de hoje contam meio, para que uma série
+   * perfeitamente estável fique em 0,5 ("na média") em vez de 0 ("caro").
+   */
   cheaperShare: number;
-  /** Ausente quando há menos de dois dias para comparar. */
+  /** Ausente quando há menos de `MIN_DAYS_FOR_VERDICT` dias para comparar. */
   verdict?: Verdict;
   dayCount: number;
 }
+
+/** Abaixo disso a amostra é pequena demais para um selo honesto. */
+export const MIN_DAYS_FOR_VERDICT = 10;
 
 function verdictOf(cheaperShare: number): Verdict {
   if (cheaperShare >= 0.75) return "bom";
@@ -79,20 +86,25 @@ export function summarize(points: SeriesPoint[]): Summary | undefined {
   if (points.length === 0) return undefined;
 
   const current = points[points.length - 1];
+  const currentIndex = points.length - 1;
   let min = points[0];
   let max = points[0];
   let sum = 0;
   let moreExpensive = 0;
+  let ties = 0;
 
-  for (const point of points) {
+  points.forEach((point, index) => {
     if (point.value < min.value) min = point;
     if (point.value > max.value) max = point;
     sum += point.value;
+    if (index === currentIndex) return;
     if (point.value > current.value) moreExpensive += 1;
-  }
+    else if (point.value === current.value) ties += 1;
+  });
 
   const average = sum / points.length;
-  const cheaperShare = moreExpensive / points.length;
+  const comparisonDays = points.length - 1;
+  const cheaperShare = comparisonDays === 0 ? 0 : (moreExpensive + 0.5 * ties) / comparisonDays;
 
   return {
     current,
@@ -101,7 +113,7 @@ export function summarize(points: SeriesPoint[]): Summary | undefined {
     average,
     diffFromAverage: average === 0 ? 0 : (current.value - average) / average,
     cheaperShare,
-    verdict: points.length < 2 ? undefined : verdictOf(cheaperShare),
+    verdict: points.length < MIN_DAYS_FOR_VERDICT ? undefined : verdictOf(cheaperShare),
     dayCount: points.length,
   };
 }

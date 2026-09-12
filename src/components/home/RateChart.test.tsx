@@ -59,6 +59,64 @@ describe("RateChart", () => {
     expect(screen.getByText("6,20 · 09/09")).toBeInTheDocument();
   });
 
+  it("ancora o rótulo da máxima perto do marcador dela, não na borda esquerda", () => {
+    // Máxima no último dia: o rótulo tem de ir para a direita.
+    renderChart([
+      { date: "2026-09-08", value: 5.8 },
+      { date: "2026-09-09", value: 5.9 },
+      { date: "2026-09-10", value: 6.0 },
+      { date: "2026-09-11", value: 6.4 },
+    ]);
+
+    const maxLabel = screen.getByTestId("rate-max-label");
+    const minLabel = screen.getByTestId("rate-min-label");
+    expect(maxLabel).toHaveTextContent("6,40 · 11/09");
+    expect(maxLabel).toHaveAttribute("text-anchor", "end");
+    expect(Number(maxLabel.getAttribute("x"))).toBeGreaterThan(Number(minLabel.getAttribute("x")));
+    expect(minLabel).toHaveAttribute("text-anchor", "start");
+  });
+
+  it("mantém os rótulos dentro do viewBox", () => {
+    renderChart();
+    for (const testId of ["rate-min-label", "rate-max-label"]) {
+      const x = Number(screen.getByTestId(testId).getAttribute("x"));
+      expect(x).toBeGreaterThanOrEqual(0);
+      expect(x).toBeLessThanOrEqual(320);
+    }
+  });
+
+  it("rotula o eixo y com mínima, média e máxima", () => {
+    // Média exata de 6,00 entre mínima 5,60 e máxima 6,40.
+    renderChart([
+      { date: "2026-09-08", value: 6.0 },
+      { date: "2026-09-09", value: 6.4 },
+      { date: "2026-09-10", value: 5.6 },
+      { date: "2026-09-11", value: 6.0 },
+    ]);
+
+    const axis = screen.getByTestId("rate-axis-y");
+    expect(axis.querySelectorAll("text")).toHaveLength(3);
+    expect(axis).toHaveTextContent("5,60");
+    expect(axis).toHaveTextContent("6,00");
+    expect(axis).toHaveTextContent("6,40");
+  });
+
+  it("marca os meses no eixo x, abreviados em português", () => {
+    const spanning: SeriesPoint[] = [
+      { date: "2026-06-15", value: 6.0 },
+      { date: "2026-07-15", value: 6.2 },
+      { date: "2026-08-14", value: 5.8 },
+      { date: "2026-09-11", value: 5.9 },
+    ];
+    renderChart(spanning);
+
+    const axis = screen.getByTestId("rate-axis-x");
+    expect(axis).toHaveTextContent("jun");
+    expect(axis).toHaveTextContent("set");
+    // No máximo três marcas, para não poluir a largura de celular.
+    expect(axis.querySelectorAll("text")).toHaveLength(3);
+  });
+
   it("mostra a linha da média", () => {
     renderChart();
     expect(screen.getByTestId("rate-average")).toBeInTheDocument();

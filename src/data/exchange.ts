@@ -18,9 +18,12 @@ export interface RatesSnapshot {
 
 export type RatesResult = { ok: true; snapshot: RatesSnapshot; stale: boolean } | { ok: false };
 
+/** Só aceitamos chaves de data no formato ISO: uma chave de lixo viraria `lastDate`. */
+const IsoDayKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+
 const ApiResponseSchema = z.object({
   base: z.literal("BRL"),
-  rates: z.record(z.string(), z.record(z.string(), z.number())),
+  rates: z.record(IsoDayKey, z.record(z.string(), z.number())),
 });
 
 const PointSchema = z.object({ date: z.string(), perBrl: z.number() });
@@ -67,7 +70,8 @@ function writeCache(snapshot: RatesSnapshot): void {
 /**
  * Converte o mapa data → moeda → valor da API em uma série por moeda,
  * ordenada por data. Dias sem valor utilizável para uma moeda entram apenas
- * nas séries das outras.
+ * nas séries das outras, e uma moeda ausente da resposta fica com série vazia
+ * sem derrubar as demais: só falha quando nenhuma das quatro tem dados.
  */
 function toSnapshot(rates: Record<string, Record<string, number>>, now: number): RatesSnapshot | undefined {
   const dates = Object.keys(rates).sort();
@@ -84,7 +88,7 @@ function toSnapshot(rates: Record<string, Record<string, number>>, now: number):
     }
   }
 
-  if (CODES.some((code) => series[code].length === 0)) return undefined;
+  if (CODES.every((code) => series[code].length === 0)) return undefined;
 
   return { series, lastDate: dates[dates.length - 1], fetchedAt: now };
 }

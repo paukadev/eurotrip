@@ -111,6 +111,38 @@ describe("loadRates", () => {
     await expect(loadRates(NOW)).resolves.toEqual({ ok: false });
   });
 
+  it("mantém as moedas presentes quando só uma delas vem na resposta", async () => {
+    const body = JSON.stringify({
+      base: "BRL",
+      rates: {
+        "2026-09-10": { EUR: 0.16799 },
+        "2026-09-11": { EUR: 0.16879 },
+      },
+    });
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(body, { status: 200 })));
+
+    const result = await loadRates(NOW);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.snapshot.series.EUR).toHaveLength(2);
+    expect(result.snapshot.series.PLN).toEqual([]);
+    expect(result.snapshot.series.CZK).toEqual([]);
+    expect(result.snapshot.series.HUF).toEqual([]);
+    expect(result.snapshot.lastDate).toBe("2026-09-11");
+  });
+
+  it("rejeita a resposta quando uma chave de data não é uma data ISO", async () => {
+    const body = JSON.stringify({
+      base: "BRL",
+      rates: {
+        "2026-09-11": { CZK: 4.0956, EUR: 0.16879, HUF: 61.517, PLN: 0.73 },
+        zzz_lixo: { CZK: 1, EUR: 1, HUF: 1, PLN: 1 },
+      },
+    });
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(body, { status: 200 })));
+    await expect(loadRates(NOW)).resolves.toEqual({ ok: false });
+  });
+
   it("ignora cache corrompido e busca de novo", async () => {
     localStorage.setItem("eurotrip:rates:v1", "{ lixo");
     const spy = stubFetchOk();

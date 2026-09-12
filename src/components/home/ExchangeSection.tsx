@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { loadRates, type RatesSnapshot } from "../../data/exchange";
 import {
   CURRENCIES,
@@ -9,6 +9,9 @@ import {
   summarize,
   toBrlSeries,
   type CurrencyCode,
+  type CurrencyMeta,
+  type SeriesPoint,
+  type Summary,
 } from "../../data/exchangeStats";
 import { RateChart } from "./RateChart";
 import styles from "./ExchangeSection.module.css";
@@ -75,21 +78,33 @@ function Rates({ snapshot, stale, code, period, onCode, onPeriod }: RatesProps) 
   const slice = sliceByDays(full, period);
   const summary = summarize(slice);
 
-  if (!summary) return <p className={styles.comparison}>Cotação indisponível no momento.</p>;
-
-  const direction = summary.diffFromAverage < 0 ? "abaixo" : "acima";
+  const periods = (
+    <div className={styles.periods} role="group" aria-label="Período">
+      {PERIODS.map((option) => (
+        <button
+          key={option}
+          type="button"
+          aria-pressed={option === period}
+          className={`${styles.period} ${option === period ? styles.periodActive : ""}`}
+          onClick={() => onPeriod(option)}
+        >
+          {`${option}d`}
+        </button>
+      ))}
+    </div>
+  );
 
   return (
     <>
-      <div className={styles.tabs} role="tablist">
+      {/* Grupo de botões e não `tablist`: não há painel de aba correspondente. */}
+      <div className={styles.tabs} role="group" aria-label="Moeda">
         {CURRENCIES.map((currency) => {
           const today = summarize(toBrlSeries(snapshot.series[currency.code], currency.unit));
           return (
             <button
               key={currency.code}
               type="button"
-              role="tab"
-              aria-selected={currency.code === code}
+              aria-pressed={currency.code === code}
               className={`${styles.tab} ${currency.code === code ? styles.tabActive : ""}`}
               onClick={() => onCode(currency.code)}
             >
@@ -100,33 +115,50 @@ function Rates({ snapshot, stale, code, period, onCode, onPeriod }: RatesProps) 
         })}
       </div>
 
+      {summary ? (
+        <CurrencyDetail meta={meta} summary={summary} slice={slice} stale={stale} periods={periods} />
+      ) : (
+        <>
+          <p className={styles.comparison} data-testid="rate-empty">
+            {`Sem histórico de cotação para ${meta.name} nesta fonte.`}
+          </p>
+          {periods}
+        </>
+      )}
+    </>
+  );
+}
+
+interface CurrencyDetailProps {
+  meta: CurrencyMeta;
+  summary: Summary;
+  slice: SeriesPoint[];
+  stale: boolean;
+  periods: ReactNode;
+}
+
+function CurrencyDetail({ meta, summary, slice, stale, periods }: CurrencyDetailProps) {
+  const quoteDate = formatShortDate(summary.current.date);
+
+  return (
+    <>
       <div className={styles.headline}>
         <p data-testid="rate-headline">
           R$ <span className={styles.value}>{formatBrl(summary.current.value, meta.decimals)}</span> por {meta.name}
         </p>
-        <span className={verdictClass(summary.verdict)} data-testid="rate-verdict">
-          {verdictLabel(summary.verdict)}
-        </span>
+        {/* Sem selo quando não há amostra suficiente: o espaço fica vazio. */}
+        {summary.verdict && (
+          <span className={verdictClass(summary.verdict)} data-testid="rate-verdict">
+            {verdictLabel(summary.verdict)}
+          </span>
+        )}
       </div>
 
       <p className={styles.comparison} data-testid="rate-comparison">
-        {summary.verdict
-          ? `${formatPercent(summary.diffFromAverage)} ${direction} da média de ${period} dias · mais barato que ${Math.round(summary.cheaperShare * 100)}% dos dias`
-          : `Sem histórico suficiente para comparar com a média de ${period} dias`}
+        {comparisonText(summary)}
       </p>
 
-      <div className={styles.periods}>
-        {PERIODS.map((option) => (
-          <button
-            key={option}
-            type="button"
-            className={`${styles.period} ${option === period ? styles.periodActive : ""}`}
-            onClick={() => onPeriod(option)}
-          >
-            {`${option}d`}
-          </button>
-        ))}
-      </div>
+      {periods}
 
       <RateChart
         points={slice}
@@ -139,21 +171,40 @@ function Rates({ snapshot, stale, code, period, onCode, onPeriod }: RatesProps) 
 
       <p className={styles.source} data-testid="rate-source">
         {stale
-          ? `Cotação de ${formatShortDate(snapshot.lastDate)} · não foi possível atualizar`
-          : `Cotação oficial BCE de ${formatShortDate(snapshot.lastDate)} · atualiza 1x por dia útil`}
+          ? `Cotação de ${quoteDate} · não foi possível atualizar`
+          : `Cotação oficial BCE de ${quoteDate} · atualiza 1x por dia útil`}
       </p>
     </>
   );
 }
 
-function verdictLabel(verdict?: "bom" | "media" | "caro"): string {
-  if (verdict === "bom") return "Bom momento";
-  if (verdict === "caro") return "Caro";
-  if (verdict === "media") return "Na média";
-  return "Sem comparação";
+/**
+ * O período pedido (30/90/180) é só a janela; o texto informa o número real de
+ * dias úteis encontrados dentro dela.
+ */
+function comparisonText(summary: Summary): string {
+  const range = `${summary.dayCount} dias úteis`;
+
+  if (!summary.verdict) {
+    return summary.dayCount === 1
+      ? "Um único dia no período: sem comparação com a média."
+      : `Apenas ${range} no período: histórico curto demais para comparar.`;
+  }
+
+  const cheaper = `mais barato que ${Math.round(summary.cheaperShare * 100)}% dos dias`;
+  if (summary.diffFromAverage === 0) return `Exatamente na média de ${range} · ${cheaper}`;
+
+  const direction = summary.diffFromAverage < 0 ? "abaixo" : "acima";
+  return `${formatPercent(summary.diffFromAverage)} ${direction} da média de ${range} · ${cheaper}`;
 }
 
-function verdictClass(verdict?: "bom" | "media" | "caro"): string {
+function verdictLabel(verdict: "bom" | "media" | "caro"): string {
+  if (verdict === "bom") return "Bom momento";
+  if (verdict === "caro") return "Caro";
+  return "Na média";
+}
+
+function verdictClass(verdict: "bom" | "media" | "caro"): string {
   if (verdict === "bom") return `${styles.verdict} ${styles.verdictBom}`;
   if (verdict === "caro") return `${styles.verdict} ${styles.verdictCaro}`;
   return styles.verdict;
