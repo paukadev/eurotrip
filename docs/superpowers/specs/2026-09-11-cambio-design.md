@@ -110,8 +110,16 @@ Casos de borda:
 
 ## Interface
 
-Entra na home logo **depois de `ConsolidatedChecklist`** e antes de `GeneralItems`, como
-mais uma `section` — o CSS global já dá a aparência de cartão a `main section`.
+Entra na home logo **depois do `Timeline`** (a seção "Roteiro"), como mais uma `section`
+— o CSS global já dá a aparência de cartão a `main section`.
+
+O **mapa da rota (`RouteMap`) sai da home por enquanto**: a chamada ao componente é
+removida de `HomePage.tsx`, mas o componente, seus estilos e os testes de `projectRoute`
+continuam no repositório, prontos para voltar quando o usuário quiser. O teste E2E-003,
+que exige o mapa visível na home, fica marcado como `skip` com a razão anotada.
+
+Ordem final da home: cabeçalho com contagem regressiva, Roteiro, Câmbio, checklist
+consolidado, itens gerais.
 
 ```
 ── CÂMBIO ─────────────────────────────────────────────

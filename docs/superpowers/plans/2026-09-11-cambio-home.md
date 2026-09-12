@@ -37,8 +37,10 @@
 | `src/components/home/ExchangeSection.module.css` | Estilos da seção. |
 | `src/components/home/ExchangeSection.test.tsx` | Testes da seção. |
 | `src/test/fetchStub.ts` | Helper de teste que responde ao `fetch` conforme a URL. |
-| `src/pages/HomePage.tsx` | Modificado: inclui a seção. |
+| `src/pages/HomePage.tsx` | Modificado: inclui a seção depois do Roteiro e deixa de renderizar o `RouteMap`. |
 | `src/pages/HomePage.test.tsx` | Modificado: passa a usar o helper novo. |
+| `e2e/helpers.ts` | Modificado: ganha o mock das cotações. |
+| `e2e/home-destination.spec.ts` | Modificado: E2E-003 (mapa) marcado como `skip`. |
 
 Dependências entre tarefas: 1 → 2 → 3 → 4 → 5. Cada uma termina com testes verdes e um commit.
 
@@ -1451,13 +1453,15 @@ git commit -m "Adiciona seção de câmbio com abas de moeda e período"
 
 ---
 
-### Task 5: Ligar na home e ajustar o stub de `fetch` dos testes
+### Task 5: Ligar na home, esconder o mapa e ajustar o stub de `fetch` dos testes
 
 **Files:**
 
 - Create: `src/test/fetchStub.ts`
-- Modify: `src/pages/HomePage.tsx` (importa e renderiza a seção depois de `ConsolidatedChecklist`)
+- Modify: `src/pages/HomePage.tsx` (renderiza a seção depois do `Timeline`; remove o `RouteMap`)
 - Modify: `src/pages/HomePage.test.tsx:7-9` (usa o helper novo)
+- Modify: `e2e/helpers.ts` (mock das cotações)
+- Modify: `e2e/home-destination.spec.ts:36` (E2E-003 marcado como `skip` enquanto o mapa está fora)
 
 **Interfaces:**
 
@@ -1546,36 +1550,88 @@ function stubFetch(body: string, status = 200) {
 
 E no `afterEach` existente (linhas 11-14), acrescentar `localStorage.clear();` para o cache de um teste não vazar para o próximo.
 
-- [ ] **Step 5: Renderizar a seção na home**
+- [ ] **Step 5: Renderizar a seção na home e tirar o mapa**
 
-Em `src/pages/HomePage.tsx`, importar e inserir a seção depois de `ConsolidatedChecklist`:
+Em `src/pages/HomePage.tsx`: importar `ExchangeSection`, colocá-la logo depois do
+`Timeline` (a seção "Roteiro") e remover a linha do `RouteMap` junto com o import dele.
+O componente `RouteMap`, seus estilos e os testes de `projectRoute` continuam no
+repositório — só param de ser renderizados.
 
 ```tsx
 import { ExchangeSection } from "../components/home/ExchangeSection";
 ```
 
+O corpo do `return` fica assim:
+
 ```tsx
-      <ConsolidatedChecklist trip={trip} />
+      <Timeline stays={ordered} totalDuration={duration} />
       <ExchangeSection />
+      <ConsolidatedChecklist trip={trip} />
       <GeneralItems items={trip.generalItems} />
 ```
 
-- [ ] **Step 6: Rodar a suíte inteira**
+Remover também o import agora sem uso:
+
+```tsx
+import { RouteMap } from "../components/home/RouteMap";
+```
+
+Se sobrar import não usado, `npm run build` falha no `tsc`.
+
+- [ ] **Step 6: Ajustar os testes E2E**
+
+O teste E2E-003 exige o mapa visível na home e passa a falhar. Em
+`e2e/home-destination.spec.ts:36`, trocar `test(` por `test.skip(` nesse caso e
+acrescentar a razão logo acima:
+
+```ts
+  // Mapa da rota fora da home por decisão do usuário (2026-09-11); o componente
+  // continua no repositório. Reativar este teste quando ele voltar.
+  test.skip("E2E-003: renders markers per coord-bearing city, click marker opens stay page", async ({
+```
+
+Em `e2e/helpers.ts`, acrescentar o mock das cotações, para o navegador do Playwright não
+chamar a API de verdade:
+
+```ts
+export async function mockRates(page: Page): Promise<void> {
+  const body = JSON.stringify({
+    base: "BRL",
+    rates: {
+      "2026-09-10": { EUR: 0.16799, PLN: 0.72604, CZK: 4.0739, HUF: 61.274 },
+      "2026-09-11": { EUR: 0.16879, PLN: 0.73, CZK: 4.0956, HUF: 61.517 },
+    },
+  });
+  await page.route("**/api.frankfurter.dev/**", (route) =>
+    route.fulfill({ status: 200, contentType: "application/json", body }),
+  );
+}
+```
+
+E chamar `await mockRates(page);` junto de cada `await mockTrip(page, ...)` nos testes
+que abrem a home.
+
+- [ ] **Step 7: Rodar a suíte inteira**
 
 Run: `npx vitest run`
-Expected: PASS em todos os arquivos, incluindo `DestinationPage.test.tsx` e `TripProvider.test.tsx`, que não renderizam a home e seguem com o stub antigo.
+Expected: PASS em todos os arquivos, incluindo `derive.routemap.test.ts` (as funções do
+mapa continuam testadas) e `DestinationPage.test.tsx`, que não renderiza a home.
 
 Run: `npm run build`
-Expected: build sem erro de TypeScript.
+Expected: build sem erro de TypeScript, inclusive de import não usado.
 
-- [ ] **Step 7: Conferir no navegador**
+- [ ] **Step 8: Conferir no navegador**
 
 Run: `npm run dev` e abrir a home.
-Expected: a seção "Câmbio" aparece depois do checklist, com as quatro abas, o valor de hoje, o selo, o gráfico e a data da cotação. Trocar de aba e de período muda os números. Com a rede desligada nas ferramentas de desenvolvedor e o cache limpo, aparece "Cotação indisponível no momento" e o resto da home continua normal.
+Expected: a ordem é contagem regressiva, Roteiro, Câmbio, checklist, itens gerais, sem o
+mapa da rota. A seção de câmbio traz as quatro abas, o valor de hoje, o selo, o gráfico e
+a data da cotação; trocar de aba e de período muda os números. Com a rede desligada nas
+ferramentas de desenvolvedor e o cache limpo, aparece "Cotação indisponível no momento" e
+o resto da home continua normal.
 
-- [ ] **Step 8: Commit**
+- [ ] **Step 9: Commit**
 
 ```bash
-git add src/pages/HomePage.tsx src/pages/HomePage.test.tsx src/test/fetchStub.ts
-git commit -m "Exibe a seção de câmbio na home"
+git add src/pages/HomePage.tsx src/pages/HomePage.test.tsx src/test/fetchStub.ts e2e/helpers.ts e2e/home-destination.spec.ts
+git commit -m "Exibe câmbio abaixo do roteiro e esconde o mapa da rota"
 ```
