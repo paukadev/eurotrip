@@ -1,11 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { mockTrip } from "./helpers";
+import { mockRates, mockTrip } from "./helpers";
 
 test.describe("Home overview and navigation", () => {
   test("E2E-001: home timeline -> open Praga -> header/lodging/itinerary -> back to home", async ({
     page,
   }) => {
     await mockTrip(page, "valid");
+    await mockRates(page);
     await page.goto("/");
 
     const timeline = page.getByTestId("timeline-list");
@@ -25,6 +26,7 @@ test.describe("Countdown", () => {
   test("E2E-002: future start date shows 'faltam X dias'", async ({ page }) => {
     await page.clock.install({ time: new Date("2026-12-01T12:00:00Z") });
     await mockTrip(page, "valid");
+    await mockRates(page);
     await page.goto("/");
 
     await expect(page.getByRole("status").filter({ hasText: /faltam \d+ dias/i })).toBeVisible();
@@ -33,10 +35,13 @@ test.describe("Countdown", () => {
 });
 
 test.describe("Route map", () => {
-  test("E2E-003: renders markers per coord-bearing city, click marker opens stay page", async ({
+  // Mapa da rota fora da home por decisão do usuário (2026-09-11); o componente
+  // continua no repositório. Reativar este teste quando ele voltar.
+  test.skip("E2E-003: renders markers per coord-bearing city, click marker opens stay page", async ({
     page,
   }) => {
     await mockTrip(page, "repeated-cities");
+    await mockRates(page);
     await page.goto("/");
 
     const svg = page.locator("svg[aria-label='Mapa da rota']");
@@ -56,6 +61,7 @@ test.describe("Bought vs pending consolidation", () => {
     page,
   }) => {
     await mockTrip(page, "multi-currency");
+    await mockRates(page);
     await page.goto("/");
 
     await expect(page.getByText(/2 comprado/i)).toBeVisible();
@@ -74,6 +80,7 @@ test.describe("Itinerary by day", () => {
     page,
   }) => {
     await mockTrip(page, "valid");
+    await mockRates(page);
     await page.goto("/");
     await page.getByTestId("timeline-list").getByRole("link", { name: /praga/i }).click();
 
@@ -90,6 +97,7 @@ test.describe("Malformed data", () => {
     page,
   }) => {
     await mockTrip(page, "malformed");
+    await mockRates(page);
     await page.goto("/");
     const alert = page.getByRole("alert");
     await expect(alert).toBeVisible();
@@ -108,6 +116,7 @@ test.describe("Data update", () => {
     page,
   }) => {
     await mockTrip(page, "valid");
+    await mockRates(page);
     await page.goto("/");
     const timeline = page.getByTestId("timeline-list");
     await expect(timeline.getByRole("link", { name: /praga/i })).toBeVisible();
@@ -142,6 +151,7 @@ test.describe("Static deploy", () => {
     // No mockTrip: this exercises the real public/viagem.json served as a
     // plain static asset by the preview server, proving the whole flow
     // (HTML, JS bundle, and data) works over static HTTP with no backend.
+    await mockRates(page);
     const response = await page.goto("/");
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("heading", { level: 1, name: /eurotrip/i })).toBeVisible();
@@ -155,6 +165,7 @@ test.describe("Responsive layout (375px)", () => {
     page,
   }) => {
     await mockTrip(page, "valid");
+    await mockRates(page);
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1, name: /eurotrip/i })).toBeVisible();
 
@@ -188,6 +199,7 @@ test.describe("Scale", () => {
     page,
   }) => {
     await mockTrip(page, "100-stays");
+    await mockRates(page);
     await page.goto("/");
 
     const links = page.getByTestId("timeline-list").getByRole("link");

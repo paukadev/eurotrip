@@ -3,14 +3,19 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { HashRouter } from "react-router";
 import { TripProvider } from "../app/TripProvider";
 import { AppRoutes } from "../app/routes";
+import { stubFetchRoutes, ratesFixtureBody, RATES_MATCH } from "../test/fetchStub";
 
 function stubFetch(body: string, status = 200) {
-  vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(body, { status })));
+  stubFetchRoutes([
+    { match: "viagem.json", body, status },
+    { match: RATES_MATCH, body: ratesFixtureBody() },
+  ]);
 }
 
 afterEach(() => {
   vi.unstubAllGlobals();
   window.location.hash = "";
+  localStorage.clear();
 });
 
 function renderApp() {
@@ -107,5 +112,12 @@ describe("HomePage", () => {
 
     expect(await screen.findByRole("link", { name: /praga/i })).toBeInTheDocument();
     expect(screen.getByText(/1 comprado/i)).toBeInTheDocument();
+  });
+
+  it("mostra a seção de câmbio com a cotação do euro", async () => {
+    stubFetch(JSON.stringify({ title: "Eurotrip", destinos: [stayFixture()] }));
+    renderApp();
+
+    expect(await screen.findByTestId("rate-headline")).toHaveTextContent(/por euro/);
   });
 });

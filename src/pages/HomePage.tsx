@@ -3,7 +3,7 @@ import { countdownState, orderedStays, tripDuration } from "../data/derive";
 import { useTrip } from "../app/TripProvider";
 import { CountdownBanner } from "../components/home/CountdownBanner";
 import { Timeline } from "../components/home/Timeline";
-import { RouteMap } from "../components/home/RouteMap";
+import { ExchangeSection } from "../components/home/ExchangeSection";
 import { ConsolidatedChecklist } from "../components/home/ConsolidatedChecklist";
 import { GeneralItems } from "../components/home/GeneralItems";
 import styles from "./HomePage.module.css";
@@ -26,7 +26,7 @@ export function HomePage() {
       </header>
 
       <Timeline stays={ordered} totalDuration={duration} />
-      <RouteMap stays={trip.stays} />
+      <ExchangeSection />
       <ConsolidatedChecklist trip={trip} />
       <GeneralItems items={trip.generalItems} />
     </div>
